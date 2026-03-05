@@ -166,9 +166,9 @@ flowchart TD
     AutoCheck -->|Failed:<br/>Server tenure < 14 days OR<br/>Has bans/warnings OR<br/>Already has pending app OR<br/>In cooldown period| AutoReject[Bot DMs: auto-rejected<br/>Can reapply after cooldown<br/>Bot notifies initiator]
     AutoCheck -->|Passed| PostReview[Posted to team channel<br/>for review]
 
-    PostReview --> TeamReview{Team reviews<br/>application}
-    TeamReview -->|Denied| Deny1[Bot DMs: application denied<br/>Can reapply after cooldown]
-    TeamReview -->|Approved| GrantRole[Bot grants Trial Team role]
+    PostReview --> TeamReview{Team reviews<br/>application<br/>2 full members OR<br/>1 Team Lead}
+    TeamReview -->|Any member denies| Deny1[Status: APPLICATION_DENIED<br/>Bot DMs: application denied<br/>Can reapply after cooldown]
+    TeamReview -->|Approved| GrantRole[Status: TRIAL_ACTIVE<br/>Bot grants Trial Team role]
 
     GrantRole --> UnlockChannel[Bot unlocks team's private<br/>guidelines channel read-only]
     UnlockChannel --> DMOnboard[Bot DMs applicant:<br/>- Confirmation<br/>- Guidelines link<br/>- Trial expectations<br/>- Failure conditions]
@@ -179,17 +179,20 @@ flowchart TD
     TrialActive -->|Failed requirements| TrialFail[Bot removes Trial Team role<br/>Bot DMs: trial failed<br/>Mark as TRIAL_FAILED<br/>Can reapply after cooldown]
     TrialActive -->|All requirements<br/>completed| TrialComplete[Bot confirms completion<br/>in team channel]
 
-    TrialComplete --> OpenVote[Bot opens promotion vote<br/>with approve/deny buttons]
-    OpenVote --> VoteWindow[Team members vote<br/>48-hour window]
+    TrialComplete --> OpenVote[Status: AWAITING_TEAM_VOTE<br/>Bot opens promotion vote<br/>with approve/deny buttons<br/>48-hour window]
+    OpenVote --> VoteWindow[Team members vote]
 
     VoteWindow --> Majority{Simple majority<br/>>50% reached?}
-    Majority -->|No| VoteFail[Bot declines<br/>Bot removes Trial Team role<br/>Bot DMs: declined<br/>Can reapply after cooldown]
-    Majority -->|Yes| LeadReview{Team Lead<br/>final sign-off}
+    Majority -->|No| VoteFail[Status: VOTE_FAILED<br/>Bot removes Trial Team role<br/>Bot DMs: declined<br/>Can reapply after cooldown]
+    Majority -->|Yes| AwaitingLead[Status: AWAITING_LEAD_APPROVAL<br/>Notify Team Lead<br/>Start 7-day timeout]
 
-    LeadReview -->|/deny| LeadDeny[Bot removes Trial Team role<br/>Bot DMs: declined by Lead<br/>Can reapply after cooldown]
-    LeadReview -->|/promote| Promote[Bot promotes to full Team Staff<br/>Bot grants Community Staff role<br/>Bot removes Trial Team role]
+    AwaitingLead --> LeadReview{Team Lead<br/>responds?}
+    LeadReview -->|/deny within 7 days| LeadDeny[Status: DENIED_BY_LEAD<br/>Record Team Lead ID<br/>Bot removes Trial Team role<br/>Bot DMs: declined by Lead<br/>Can reapply after cooldown]
+    LeadReview -->|/promote within 7 days| Promote[Status: PROMOTED_BY_LEAD<br/>Record Team Lead ID<br/>Bot promotes to full Team Staff<br/>Bot grants Community Staff role<br/>Bot removes Trial Team role]
+    LeadReview -->|No response after 7 days| AutoPromote[Status: PROMOTED_BY_LEAD_INACTION<br/>Record Team Lead ID (at timeout)<br/>Bot promotes to full Team Staff<br/>Bot grants Community Staff role<br/>Bot removes Trial Team role<br/>Bot notifies Lead of auto-approval]
 
     Promote --> Announce[Bot DMs congratulations<br/>Public announcement posted]
+    AutoPromote --> Announce
     Announce --> End([Process complete])
 
     Decline1 --> End
@@ -233,9 +236,12 @@ The form is delivered via Discord DM (modal) after `/onboard-start @user --team 
 ### Review Process
 
 - Applications that pass auto-checks are posted as embeds in the team's private channel
-- Team members use approve/deny buttons on the embed
-- Any single team member can approve or deny (or: configurable to require multiple approvals)
-- Decision is logged with the reviewer's identity and timestamp
+- Only **full team members** (not trial members) can approve or deny applications
+- **Approval requirements:**
+  - Requires **2 full team members** to approve, OR
+  - **1 Team Lead** approval (Team Lead can single-handedly approve)
+- **Denial:** Any single full team member can deny (immediate denial)
+- All decisions are logged with the reviewer's identity and timestamp
 
 ### Team-Specific Trial Setup
 
@@ -267,9 +273,10 @@ Examples of team-specific trial requirements (defined in extensions):
 - Vote has a defined window (default: 48 hours, configurable per team)
 - Threshold: **Simple majority (>50%)** of votes cast
 - If no majority by deadline, the application is auto-declined
-- If majority approves, escalated to Team Lead for final sign-off via `/promote` or `/deny` commands
-- Team Lead can approve or deny at any time (no time limit)
-- All votes are logged with voter identity and timestamp
+- If majority approves, application enters **AWAITING_LEAD_APPROVAL** status and is escalated to Team Lead for final sign-off via `/promote` or `/deny` commands
+- Team Lead has **7 days** (configurable) to respond after vote passes
+- If Team Lead doesn't respond within the timeout window, the promotion is **auto-approved** and Team Lead is notified
+- All votes and decisions are logged with voter/actor identity and timestamp
 
 ---
 
@@ -368,7 +375,8 @@ Notifications are delivered through multiple channels:
 | Trial failed | "Your trial has ended. [Reason]. You may reapply after [X] days." |
 | Trial complete | "You've completed all trial requirements! Your promotion is now under review by the [Team] team." |
 | Vote passed, awaiting Lead | "The [Team] team has approved your promotion! Awaiting final sign-off from Team Lead." |
-| Promoted | "🎉 Congratulations! You've been promoted to [Team] Staff. [New permissions overview]" (Also posted in public announcements channel) |
+| Auto-approved (Lead timeout) | "🎉 Your promotion has been automatically approved! The Team Lead approval window has expired. Welcome to [Team] Staff!" |
+| Promoted (Lead approved) | "🎉 Congratulations! You've been promoted to [Team] Staff. [New permissions overview]" (Also posted in public announcements channel) |
 | Declined (vote failed) | "After review, the [Team] team has decided not to proceed with your promotion. You may reapply after [X] days." |
 | Declined (Lead denied) | "After final review, your promotion was not approved. You may reapply after [X] days." |
 
@@ -380,7 +388,8 @@ Notifications are delivered through multiple channels:
 - Trial member failed requirements → alert posted
 - Trial member completed all requirements → summary posted + vote opened
 - Vote concluded → results announced
-- Awaiting Team Lead's final approval → notification with `/promote` and `/deny` instructions
+- Awaiting Team Lead's final approval → notification with `/promote` and `/deny` instructions and 7-day deadline
+- Auto-approval triggered (Lead timeout) → notification posted: "@TeamLead did not respond within 7 days. @User has been auto-approved and promoted to [Team] Staff."
 
 **In Public Announcements Channel:**
 - New staff member promoted → celebration announcement with @mention
@@ -407,14 +416,37 @@ Application {
   availability: string
   motivation: string
   custom_fields: JSON (team-specific application data)
-  status: PENDING | APPROVED | DENIED | TRIAL_ACTIVE | TRIAL_FAILED | PROMOTED | VOTE_FAILED
+  status: APPLICATION_PENDING_REVIEW | APPLICATION_DENIED | TRIAL_ACTIVE | TRIAL_FAILED | AWAITING_TEAM_VOTE | VOTE_FAILED | AWAITING_LEAD_APPROVAL | PROMOTED_BY_LEAD | PROMOTED_BY_LEAD_INACTION | DENIED_BY_LEAD
   initiated_by: Discord snowflake (tracks who ran /onboard-start)
-  reviewer_id: Discord snowflake (nullable, tracks who approved/denied)
-  reviewed_at: timestamp (nullable)
+  approved_by: JSON array of Discord snowflakes (nullable, tracks who approved application - either 2 full members or 1 Team Lead)
+  denied_by: Discord snowflake (nullable, tracks who denied application)
+  reviewed_at: timestamp (nullable, when application was approved or denied)
+  lead_approval_deadline: timestamp (nullable, set when vote passes, used for auto-approve timeout)
+  lead_decision_by: Discord snowflake (nullable, Team Lead who made final promotion/denial decision, or who was Lead at time of auto-promotion)
+  lead_decided_at: timestamp (nullable, when Lead made decision or when auto-promotion triggered)
   created_at: timestamp
   updated_at: timestamp
 }
+```
 
+**Application Status Values:**
+
+| Status | Description | Transition From | Transition To |
+|--------|-------------|-----------------|---------------|
+| `APPLICATION_PENDING_REVIEW` | Application submitted and passed auto-checks, awaiting team review | Initial state after user completes application form | `TRIAL_ACTIVE`, `APPLICATION_DENIED` |
+| `APPLICATION_DENIED` | Application denied during initial team review | `APPLICATION_PENDING_REVIEW` | Terminal state |
+| `TRIAL_ACTIVE` | User is currently in trial period (bot grants Trial Team role, unlocks channel, sends DM) | `APPLICATION_PENDING_REVIEW` (when team approves) | `TRIAL_FAILED`, `AWAITING_TEAM_VOTE` |
+| `TRIAL_FAILED` | User failed to meet trial requirements | `TRIAL_ACTIVE` | Terminal state |
+| `AWAITING_TEAM_VOTE` | Trial completed successfully, team promotion vote in progress (48-hour window) | `TRIAL_ACTIVE` (when trial completes) | `VOTE_FAILED`, `AWAITING_LEAD_APPROVAL` |
+| `VOTE_FAILED` | Team promotion vote did not reach majority threshold | `AWAITING_TEAM_VOTE` | Terminal state |
+| `AWAITING_LEAD_APPROVAL` | Team vote passed, awaiting Team Lead final sign-off (7-day timeout) | `AWAITING_TEAM_VOTE` (when vote passes) | `PROMOTED_BY_LEAD`, `PROMOTED_BY_LEAD_INACTION`, `DENIED_BY_LEAD` |
+| `PROMOTED_BY_LEAD` | Team Lead manually approved promotion via `/promote` command | `AWAITING_LEAD_APPROVAL` | Terminal state |
+| `PROMOTED_BY_LEAD_INACTION` | Promotion auto-approved after Team Lead did not respond within timeout (7 days) | `AWAITING_LEAD_APPROVAL` | Terminal state |
+| `DENIED_BY_LEAD` | Team Lead explicitly denied promotion via `/deny` command after vote passed | `AWAITING_LEAD_APPROVAL` | Terminal state |
+
+**Terminal states** (APPLICATION_DENIED, TRIAL_FAILED, VOTE_FAILED, PROMOTED_BY_LEAD, PROMOTED_BY_LEAD_INACTION, DENIED_BY_LEAD) are final. Users in terminal states can create new applications after the cooldown period expires.
+
+```
 Trial {
   id: UUID
   application_id: FK → Application
@@ -475,7 +507,8 @@ Teams can extend the data model with:
 | No team members vote within the window | Auto-decline. Applicant can reapply after cooldown. |
 | User who was previously declined tries to reapply within cooldown | `/onboard-start` checks database. If in cooldown, bot notifies initiator: "User must wait [X days] before reapplying." |
 | User tries to reapply after cooldown expires | Allowed. Previous application history is logged but does not block new application. |
-| Team votes approve but Team Lead never responds | Application stays in "awaiting final approval" state indefinitely. No timeout. |
+| Team votes approve but Team Lead never responds | Application enters AWAITING_LEAD_APPROVAL status with 7-day deadline. If Team Lead doesn't respond within 7 days, status changes to PROMOTED_BY_LEAD_INACTION and user is promoted automatically. Team Lead ID is recorded. Team Lead is notified of auto-approval. |
+| Team Lead denies after vote passes | Status changes to DENIED_BY_LEAD. Team Lead ID is recorded. Bot removes Trial [Team] role, DMs applicant with decline message. User can reapply after cooldown. |
 | Bot goes offline during trial | Trial data persists. **Recommendation:** build in recovery mechanisms to handle missed checks gracefully. |
 | User is promoted but already left the server | Promotion fails gracefully. Application marked as completed but role not granted. Logged in audit. |
 
@@ -561,6 +594,7 @@ This specification provides the **general onboarding framework**. Each team impl
 | `VOTE_WINDOW_HOURS` | 48 | How long the promotion vote stays open (can be overridden per team) |
 | `VOTE_THRESHOLD` | 0.5 | Fraction of votes needed to approve (>50%) |
 | `DEFAULT_VOTE_OUTCOME` | DECLINE | What happens if no votes are cast in the window |
+| `LEAD_APPROVAL_TIMEOUT_DAYS` | 7 | Days to wait for Team Lead approval after vote passes before auto-approving |
 | `TRIAL_DURATION_DAYS` | 7 | Default trial duration (can be overridden per team) |
 | `COMMUNITY_STAFF_ROLE_ID` | (configured) | Role ID for Community Staff umbrella role (granted on promotion) |
 | `PUBLIC_ANNOUNCEMENT_CHANNEL_ID` | (configured) | Channel for promotion announcements |
