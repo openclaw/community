@@ -596,7 +596,7 @@ This specification provides the **general onboarding framework**. Each team impl
 - **VC Mod Extensions:** `rfc/voice/voice-001-extensions.md`
   - Time slot system
   - Voice channel presence tracking
-  - Clawtributor role system
+  - VoiceContributor role system
   - Voice-specific commands
 
 - **Discord Mod Extensions:** `rfc/discord-mod/discord-mod-001-extensions.md` *(planned)*

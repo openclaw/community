@@ -16,7 +16,7 @@
 4. [VC Mod Commands](#4-vc-mod-commands)
 5. [Trial Requirements](#5-trial-requirements)
 6. [Promotion Metrics](#6-promotion-metrics)
-7. [Clawtributor Role System](#7-clawtributor-role-system)
+7. [VoiceContributor Role System](#7-clawtributor-role-system)
 8. [Data Model Extensions](#8-data-model-extensions)
 9. [Configuration](#9-configuration)
 
@@ -34,14 +34,14 @@ The VC Mod team requires trial members to:
 3. **Observe and report** on voice channel activity using `/report`
 4. **Cover diverse channels** to demonstrate broad voice moderation awareness
 
-Additionally, VC Mods manage the **Clawtributor role system**, which grants speaking permissions in protected voice channels to trusted community contributors.
+Additionally, VC Mods manage the **VoiceContributor role system**, which grants speaking permissions in protected voice channels to trusted community contributors.
 
 ### Integration with General Framework
 
 This spec extends the general framework by:
 - Adding custom trial metrics (time slots, presence tracking)
 - Defining team-specific commands (`/slots`, `/claim`, `/report`, `/voc-*`)
-- Implementing the Clawtributor nomination/grant system
+- Implementing the VoiceContributor nomination/grant system
 - Providing quantitative trial completion criteria
 
 ---
@@ -135,10 +135,10 @@ A scheduled job runs every minute (or on voice state changes) to:
 
 | Command | Description |
 |---------|-------------|
-| `/voc-nominate @user` | Nominate a user for Clawtributor role (speaking access to protected VCs) |
+| `/voc-nominate @user` | Nominate a user for VoiceContributor role (speaking access to protected VCs) |
 | `/voc-remove-nomination @user` | Withdraw a nomination you created (only if not yet seconded) |
-| `/voc-remove @user` | Vote to remove Clawtributor role from a user (requires 2 voicemods) |
-| `/voc-nominations` | List all pending Clawtributor nominations |
+| `/voc-remove @user` | Vote to remove VoiceContributor role from a user (requires 2 voicemods) |
+| `/voc-nominations` | List all pending VoiceContributor nominations |
 
 ### VC Mod Team / Lead Commands
 
@@ -202,69 +202,69 @@ The VC Mod team reviews:
 
 ---
 
-## 7. Clawtributor Role System
+## 7. VoiceContributor Role System
 
 ### Overview
 
-The Clawtributor role grants speaking permissions in designated protected voice channels. This system allows the VC mod team to recognize and empower trusted community contributors who actively participate in specific voice channels (e.g., Developers, Design, Music Production, etc.).
+The VoiceContributor role grants speaking permissions in designated protected voice channels. This system allows the VC mod team to recognize and empower trusted community contributors who actively participate in specific voice channels (e.g., Developers, Design, Music Production, etc.).
 
 ### Purpose
 
-- **Protected voice channels** are voice channels where only VC mods and Clawtributors can speak
-- Regular members can listen but cannot speak without the Clawtributor role
+- **Protected voice channels** are voice channels where only VC mods and VoiceContributors can speak
+- Regular members can listen but cannot speak without the VoiceContributor role
 - This creates focused, high-signal voice spaces for collaboration
 
 ### Who Can Nominate
 
-**IMPORTANT:** Only VC mods (full role) and existing Clawtributors can nominate users. Regular members cannot nominate.
+**IMPORTANT:** Only VC mods (full role) and existing VoiceContributors can nominate users. Regular members cannot nominate.
 
 ### Nomination & Grant Process
 
 ```
-VC mod or Clawtributor runs /voc-nominate @user
+VC mod or VoiceContributor runs /voc-nominate @user
         │
         ▼
-Bot checks permissions (must be VC mod or Clawtributor)
+Bot checks permissions (must be VC mod or VoiceContributor)
         │
-        ├── NOT VC mod/Clawtributor → Denied: "You don't have permission to nominate."
+        ├── NOT VC mod/VoiceContributor → Denied: "You don't have permission to nominate."
         │
-        └── IS VC mod/Clawtributor → Continue
+        └── IS VC mod/VoiceContributor → Continue
                 │
                 ▼
         Bot posts nomination message in configured channel
         Bot reacts with ✅ emoji
                 │
                 ▼
-        Another VC mod or Clawtributor reacts with ✅ to second
+        Another VC mod or VoiceContributor reacts with ✅ to second
                 │
                 ├── Same person tries to second → Denied
-                ├── Regular user reacts → Ignored (only VC mod/Clawtributor reactions count)
+                ├── Regular user reacts → Ignored (only VC mod/VoiceContributor reactions count)
                 │
-                └── Different VC mod/Clawtributor seconds → Role granted immediately
+                └── Different VC mod/VoiceContributor seconds → Role granted immediately
                         │
                         ▼
-                Bot grants Clawtributor role
+                Bot grants VoiceContributor role
                 Bot sends DM to recipient
                 Bot posts public announcement
                 Bot logs to mod log channel
 ```
 
-### Clawtributor Commands
+### VoiceContributor Commands
 
 | Command | Who Can Use | Description |
 |---------|-------------|-------------|
-| `/voc-nominate @user` | VC mods & Clawtributors | Nominate a user for Clawtributor role |
+| `/voc-nominate @user` | VC mods & VoiceContributors | Nominate a user for VoiceContributor role |
 | `/voc-remove-nomination @user` | Original nominator only | Withdraw a nomination (only if not yet seconded) |
-| `/voc-remove @user` | VC mods only | Vote to remove Clawtributor role (requires 2 VC mods) |
-| `/voc-nominations` | VC mods & Clawtributors | List all pending nominations |
+| `/voc-remove @user` | VC mods only | Vote to remove VoiceContributor role (requires 2 VC mods) |
+| `/voc-nominations` | VC mods & VoiceContributors | List all pending nominations |
 
 ### Role Grant Rules
 
-- **Who can nominate:** ONLY VC mods (full role) or existing Clawtributors
-- **Who can second:** ONLY VC mods or Clawtributors (except the nominator)
+- **Who can nominate:** ONLY VC mods (full role) or existing VoiceContributors
+- **Who can second:** ONLY VC mods or VoiceContributors (except the nominator)
 - **Seconding method:** React with ✅ to the nomination message
-- **Permission check:** Bot enforces permissions - command will fail if used by non-VC mod/non-Clawtributor
-- **Grant timing:** Immediate upon valid second reaction from VC mod/Clawtributor
+- **Permission check:** Bot enforces permissions - command will fail if used by non-VC mod/non-VoiceContributor
+- **Grant timing:** Immediate upon valid second reaction from VC mod/VoiceContributor
 - **Expiration:** Nominations never expire (stay open until seconded or withdrawn)
 - **Self-nomination:** Not allowed
 - **Duplicate nomination:** Blocked if user already has the role
@@ -287,12 +287,12 @@ Bot logs to mod log channel
 ```
 
 - **Requires 2 VC mods** to remove (same 2-endorsement pattern)
-- Only VC mods can initiate and second removals (Clawtributors cannot remove)
+- Only VC mods can initiate and second removals (VoiceContributors cannot remove)
 - Removals are logged permanently in audit trail
 
 ### Protected Voice Channels
 
-The Clawtributor role grants speaking permissions to a configurable set of protected voice channels:
+The VoiceContributor role grants speaking permissions to a configurable set of protected voice channels:
 - Channels are defined in bot configuration (`PROTECTED_VOICE_CHANNELS`)
 - Can be updated without code changes
 - Examples: "Developers", "Design Studio", "Music Production", etc.
@@ -300,36 +300,36 @@ The Clawtributor role grants speaking permissions to a configurable set of prote
 **Permission Structure:**
 - @everyone: Can join and listen, cannot speak
 - VC Mod role: Can speak
-- Clawtributor role: Can speak
+- VoiceContributor role: Can speak
 
 ### Notifications
 
 | Event | DM | Public Announcement | Mod Log |
 |-------|-----|---------------------|---------|
 | Nominated | ❌ | ❌ | ✅ |
-| Granted Clawtributor | ✅ | ✅ | ✅ |
-| Removed from Clawtributor | ✅ | ❌ | ✅ |
+| Granted VoiceContributor | ✅ | ✅ | ✅ |
+| Removed from VoiceContributor | ✅ | ❌ | ✅ |
 
 **DM Templates:**
-- **Granted:** "🎉 You've been granted the Clawtributor role! You can now speak in protected voice channels: [channel list]"
-- **Removed:** "Your Clawtributor role has been removed by the VC mod team."
+- **Granted:** "🎉 You've been granted the VoiceContributor role! You can now speak in protected voice channels: [channel list]"
+- **Removed:** "Your VoiceContributor role has been removed by the VC mod team."
 
 **Public Announcement Template:**
-- "🎉 Welcome @user as a new Clawtributor! They can now contribute in [protected channels]."
+- "🎉 Welcome @user as a new VoiceContributor! They can now contribute in [protected channels]."
 
 ### Edge Cases
 
 | Scenario | Behavior |
 |----------|----------|
-| User already has Clawtributor role | Bot blocks nomination: "User is already a Clawtributor!" |
+| User already has VoiceContributor role | Bot blocks nomination: "User is already a VoiceContributor!" |
 | User tries to second own nomination | Denied: "You cannot second your own nomination." |
 | User tries to nominate themselves | Denied: "You cannot nominate yourself." |
 | Nominator withdraws before second | Nomination removed, reaction tracking stopped |
 | User leaves server after nomination | Nomination stays open (in case they return) |
 | User leaves server after granted role | Role is removed automatically by Discord |
-| Clawtributor nominates another user | Allowed, follows same rules as VC mod nominations |
+| VoiceContributor nominates another user | Allowed, follows same rules as VC mod nominations |
 | Regular member tries `/voc-nominate` | Permission denied: "You don't have permission to nominate." Command not executed. |
-| Regular member reacts ✅ to nomination | Reaction is ignored. Only VC mod/Clawtributor reactions count toward seconding. |
+| Regular member reacts ✅ to nomination | Reaction is ignored. Only VC mod/VoiceContributor reactions count toward seconding. |
 
 ---
 
@@ -362,7 +362,7 @@ Report {
   created_at: timestamp
 }
 
-ClawtributorNomination {
+VoiceContributorNomination {
   id: UUID
   nominee_id: Discord snowflake
   nominator_id: Discord snowflake
@@ -374,7 +374,7 @@ ClawtributorNomination {
   updated_at: timestamp
 }
 
-ClawtributorRemoval {
+VoiceContributorRemoval {
   id: UUID
   user_id: Discord snowflake
   initiator_id: Discord snowflake
@@ -431,7 +431,7 @@ vc_mod: {
   grace_period_minutes: 5,               # Late arrival grace period
   slot_generation_days_ahead: 14,        # How far ahead to generate slots
 
-  # Clawtributor settings
+  # VoiceContributor settings
   protected_voice_channels: [            # Array of protected VC IDs
     "channel_id_1",
     "channel_id_2",
@@ -450,8 +450,8 @@ vc_mod: {
 | `PRESENCE_THRESHOLD_MINUTES` | 45 | Minutes present required to "pass" a slot (75% threshold) |
 | `GRACE_PERIOD_MINUTES` | 5 | Late arrival grace period before presence clock starts |
 | `SLOT_GENERATION_DAYS_AHEAD` | 14 | How far in advance to generate slots |
-| `PROTECTED_VOICE_CHANNELS` | (configured) | Array of voice channel IDs where Clawtributor role grants speak permissions |
-| `NOMINATION_CHANNEL_ID` | (configured) | Channel where Clawtributor nominations are posted |
+| `PROTECTED_VOICE_CHANNELS` | (configured) | Array of voice channel IDs where VoiceContributor role grants speak permissions |
+| `NOMINATION_CHANNEL_ID` | (configured) | Channel where VoiceContributor nominations are posted |
 | `VC_MOD_CHANNEL_ID` | (configured) | Channel ID for VC Mod team channel (review, votes, notifications) |
 | `VC_MOD_LEAD_USER_ID` | (configured) | Discord user ID of VC Mod Lead with final promotion authority |
 
@@ -464,5 +464,5 @@ vc_mod: {
 - Extracted voice-specific features from general framework
 - Defined time slot system
 - Defined voice presence tracking
-- Defined Clawtributor role system
+- Defined VoiceContributor role system
 - Defined VC mod trial requirements and metrics
