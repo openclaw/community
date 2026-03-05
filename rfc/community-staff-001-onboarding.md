@@ -75,7 +75,7 @@ This is a **standalone Carbon bot** within OpenClaw's broader bot ecosystem:
 - **Barnacle Bot** (2-in-1: Sapphire + Carbon) — multi-purpose server management
 - **Audrey** — voice channel automation
 - **Krill** — support ticket system
-- **KI** — XP and leveling system
+- **Kiai** — XP and leveling system
 - **This bot** (Community Staff Onboarding) — dedicated community staff pipeline management across all teams
 
 This bot operates as a separate bot account and codebase, managing onboarding for all four community staff teams.
