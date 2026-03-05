@@ -148,60 +148,74 @@ Extensions are documented in separate RFCs (e.g., `rfc/voice/voice-001-extension
 
 ## 4. Workflow Stages
 
-### Stage 1: Application
+```mermaid
+flowchart TD
+    Start([User emails shadow@openclaw.ai]) --> Shadow{Shadow reviews<br/>candidate}
+    Shadow -->|Not appropriate| Decline1[Shadow declines or<br/>suggests different path]
+    Shadow -->|Appropriate| TeamLead[Shadow directs to Team Lead]
 
-```
-User emails shadow@openclaw.ai expressing interest in community staff
-        │
-        ▼
-Shadow has initial conversation, determines which team is appropriate
-        │
-        ├── NOT APPROPRIATE → Shadow declines or suggests different path
-        │
-        └── APPROPRIATE → Shadow directs to Team Lead
-                │
-                ▼
-        Team Lead runs /onboard-start @user --team [team_name]
-                │
-                ▼
-        Bot checks if user is in Discord server
-                │
-                ├── NOT IN SERVER → Error: "User must be in the Discord server to onboard"
-                └── IN SERVER → Continue
-                        │
-                        ▼
-                Bot DMs user with application form modal
-                        │
-                        ▼
-                User completes form (timezone, availability, motivation, optional: team-specific questions)
-                        │
-                        ▼
-                Bot stores application in database
-                        │
-                        ▼
-                Bot checks auto-reject criteria:
-                  - Account must be in server for ≥14 days
-                  - No previous bans or warnings on record
-                  - No application already pending/in trial (any team)
-                  - Not in cooldown period (default: 7 days after decline/failure)
-                        │
-                        ├── AUTO-REJECTED → Bot DMs applicant (can reapply after cooldown)
-                        │                   Bot notifies initiator in team channel
-                        │
-                        └── ELIGIBLE → Posted to team channel for review
-                                │
-                                ▼
-                        Team reviews and approves/denies
-                                │
-                                ├── APPROVED → Stage 2
-                                └── DENIED → Bot DMs applicant (can reapply after cooldown)
+    TeamLead --> OnboardCmd[Team Lead runs<br/>/onboard-start @user --team]
+    OnboardCmd --> InServer{User in<br/>Discord server?}
+    InServer -->|No| Error1[Error: User must be in server]
+    InServer -->|Yes| DMForm[Bot DMs application form modal]
+
+    DMForm --> UserFills[User completes form:<br/>timezone, availability,<br/>motivation, team questions]
+    UserFills --> StoreApp[Bot stores application<br/>in database]
+
+    StoreApp --> AutoCheck{Auto-reject<br/>criteria check}
+    AutoCheck -->|Failed:<br/>Server tenure < 14 days OR<br/>Has bans/warnings OR<br/>Already has pending app OR<br/>In cooldown period| AutoReject[Bot DMs: auto-rejected<br/>Can reapply after cooldown<br/>Bot notifies initiator]
+    AutoCheck -->|Passed| PostReview[Posted to team channel<br/>for review]
+
+    PostReview --> TeamReview{Team reviews<br/>application}
+    TeamReview -->|Denied| Deny1[Bot DMs: application denied<br/>Can reapply after cooldown]
+    TeamReview -->|Approved| GrantRole[Bot grants Trial Team role]
+
+    GrantRole --> UnlockChannel[Bot unlocks team's private<br/>guidelines channel read-only]
+    UnlockChannel --> DMOnboard[Bot DMs applicant:<br/>- Confirmation<br/>- Guidelines link<br/>- Trial expectations<br/>- Failure conditions]
+    DMOnboard --> TrialStart[Trial member begins<br/>team-specific trial activities]
+
+    TrialStart --> TrialActive{Trial period}
+    TrialActive -->|During trial:<br/>- Follows team activities<br/>- Bot tracks metrics<br/>- Team observes| TrialActive
+    TrialActive -->|Failed requirements| TrialFail[Bot removes Trial Team role<br/>Bot DMs: trial failed<br/>Mark as TRIAL_FAILED<br/>Can reapply after cooldown]
+    TrialActive -->|All requirements<br/>completed| TrialComplete[Bot confirms completion<br/>in team channel]
+
+    TrialComplete --> OpenVote[Bot opens promotion vote<br/>with approve/deny buttons]
+    OpenVote --> VoteWindow[Team members vote<br/>48-hour window]
+
+    VoteWindow --> Majority{Simple majority<br/>>50% reached?}
+    Majority -->|No| VoteFail[Bot declines<br/>Bot removes Trial Team role<br/>Bot DMs: declined<br/>Can reapply after cooldown]
+    Majority -->|Yes| LeadReview{Team Lead<br/>final sign-off}
+
+    LeadReview -->|/deny| LeadDeny[Bot removes Trial Team role<br/>Bot DMs: declined by Lead<br/>Can reapply after cooldown]
+    LeadReview -->|/promote| Promote[Bot promotes to full Team Staff<br/>Bot grants Community Staff role<br/>Bot removes Trial Team role]
+
+    Promote --> Announce[Bot DMs congratulations<br/>Public announcement posted]
+    Announce --> End([Process complete])
+
+    Decline1 --> End
+    Error1 --> End
+    AutoReject --> End
+    Deny1 --> End
+    TrialFail --> End
+    VoteFail --> End
+    LeadDeny --> End
+
+    style Start fill:#e1f5e1
+    style End fill:#ffe1e1
+    style Promote fill:#c8e6c9
+    style AutoReject fill:#ffcdd2
+    style Deny1 fill:#ffcdd2
+    style TrialFail fill:#ffcdd2
+    style VoteFail fill:#ffcdd2
+    style LeadDeny fill:#ffcdd2
+    style Decline1 fill:#ffcdd2
 ```
 
-**Application Entry Point:**
+### Application Entry Point
 
 The **only** way to enter the community staff pipeline is by emailing shadow@openclaw.ai. Shadow acts as the initial funnel, has a conversation with the candidate, and directs them to the appropriate Team Lead.
 
-**Application Form Fields:**
+### Application Form Fields
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -213,43 +227,21 @@ The **only** way to enter the community staff pipeline is by emailing shadow@ope
 
 The form is delivered via Discord DM (modal) after `/onboard-start @user --team [team]` is run.
 
-**Auto-Reject Criteria:**
+### Auto-Reject Criteria
+
 - **Minimum server tenure:** User must have been in the OpenClaw Discord for at least 14 days (configurable)
 - **Clean record:** No previous bans, kicks, or warnings on record
 - **One application at a time:** Cannot have another application pending or in trial (across any team)
 - **Cooldown period:** If previously declined or failed trial, must wait 7 days (configurable) before reapplying
 
-**Review Process:**
+### Review Process
+
 - Applications that pass auto-checks are posted as embeds in the team's private channel
 - Team members use approve/deny buttons on the embed
 - Any single team member can approve or deny (or: configurable to require multiple approvals)
 - Decision is logged with the reviewer's identity and timestamp
 
----
-
-### Stage 2: Onboarding
-
-```
-Application approved
-        │
-        ▼
-Bot grants "Trial [Team]" role
-        │
-        ▼
-Bot unlocks team's private guidelines channel (read-only access)
-        │
-        ▼
-Bot DMs applicant:
-  - Confirmation of approval
-  - Link to team guidelines channel
-  - Instructions on trial expectations (team-specific)
-  - Clear warning about trial failure conditions
-        │
-        ▼
-Trial member begins team-specific trial activities → Stage 3
-```
-
-**Team-Specific Trial Setup:**
+### Team-Specific Trial Setup
 
 Each team defines their own trial requirements. The bot provides hooks for teams to:
 - Set custom trial duration
@@ -257,27 +249,7 @@ Each team defines their own trial requirements. The bot provides hooks for teams
 - Track team-specific metrics
 - Provide team-specific onboarding materials
 
----
-
-### Stage 3: Trial Period
-
-```
-Trial member completes team-specific trial requirements
-        │
-        ├── During trial:
-        │     - Follows team-specific activities and requirements
-        │     - Bot tracks team-defined metrics
-        │     - Team members observe and provide feedback
-        │
-        ├── Failed trial requirements? → TRIAL FAILURE
-        │     - Bot removes Trial [Team] role
-        │     - Bot DMs: trial failed, can reapply after cooldown
-        │     - Application marked as TRIAL_FAILED in database
-        │
-        └── All requirements completed → Stage 4
-```
-
-**Trial Requirements:**
+### Trial Requirements
 
 Trial requirements are **team-specific** and defined in team extension specs. The general framework provides:
 - Trial start/end tracking
@@ -291,40 +263,8 @@ Examples of team-specific trial requirements (defined in extensions):
 - **Helper:** Support ticket shadowing, response quality reviews
 - **Configurator:** Configuration task completion, testing procedures
 
----
+### Vote Mechanics
 
-### Stage 4: Promotion Decision
-
-```
-Trial requirements completed (verified by team or bot)
-        │
-        ▼
-Bot confirms trial completion in team channel
-Bot opens promotion vote
-        │
-        ▼
-Team members vote (approve/deny)
-        │
-        ▼
-Simple majority (>50%) reached within vote window?
-        │
-        ├── YES → Vote sent to Team Lead for final sign-off
-        │         │
-        │         ├── APPROVED → Bot promotes to full [Team] Staff
-        │         │               Bot grants Community Staff umbrella role
-        │         │               Bot removes Trial [Team] role
-        │         │               Bot DMs + public announcement: congratulations
-        │         │
-        │         └── DENIED → Bot declines
-        │                       Bot removes Trial [Team] role
-        │                       Bot DMs: declined, can reapply after cooldown
-        │
-        └── NO → Bot declines
-                  Bot removes Trial [Team] role
-                  Bot DMs: declined, can reapply after cooldown
-```
-
-**Vote Mechanics:**
 - Vote only opens AFTER trial requirements are confirmed complete
 - Presented as a message with approve/deny buttons in the team channel
 - Each full team member gets one vote
