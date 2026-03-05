@@ -200,15 +200,11 @@ flowchart TD
     VoteFail --> End
     LeadDeny --> End
 
-    style Start fill:#e1f5e1
-    style End fill:#ffe1e1
-    style Promote fill:#c8e6c9
-    style AutoReject fill:#ffcdd2
-    style Deny1 fill:#ffcdd2
-    style TrialFail fill:#ffcdd2
-    style VoteFail fill:#ffcdd2
-    style LeadDeny fill:#ffcdd2
-    style Decline1 fill:#ffcdd2
+    classDef successNode stroke:#2e7d32,stroke-width:3px
+    classDef failureNode stroke:#c62828,stroke-width:3px
+
+    class Start,Promote,Announce successNode
+    class Decline1,Error1,AutoReject,Deny1,TrialFail,VoteFail,LeadDeny,End failureNode
 ```
 
 ### Application Entry Point
