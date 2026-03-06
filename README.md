@@ -69,11 +69,11 @@ flowchart TD
 ## Current Team Leads
 
 ### Admin: Shadow
-- X: [@4shad0wed](https://x.com/4shad0wed)
+- X: [@4shadowed](https://x.com/4shadowed)
 - Discord: @4shadowed
 
 ### Discord Moderator Lead: Shadow
-- X: [@4shad0wed](https://x.com/4shad0wed)
+- X: [@4shadowed](https://x.com/4shadowed)
 - Discord: @4shadowed
 
 ### Voice Chat Lead: AndyML
