@@ -4,7 +4,7 @@ This directory contains Community Improvement Plans — formal proposals for cha
 
 ## Process
 
-1. **Pitch:** Open an [RFCIP issue](https://github.com/openclaw/openclaw-discord-community/issues/new?template=rfcip.yml) describing the problem and your proposed direction.
+1. **Pitch:** Open an [RFCIP issue](https://github.com/openclaw/community/issues/new?template=rfcip.yml) describing the problem and your proposed direction.
 2. **Champion:** Staff reviews the RFCIP and assigns a champion (staff sponsor and advocate). The champion assigns the next available CIP number.
 3. **Draft:** Once greenlit, open a pull request adding `rfcs/XXXX-slug.md` (where `XXXX` is the PR number). Use [`0003-rfcip-template.md`](0003-rfcip-template.md) as your starting template.
 4. **Discussion:** Minimum 7-day discussion period on the GitHub PR and (optionally) Discord. The champion chooses the Discord venue.

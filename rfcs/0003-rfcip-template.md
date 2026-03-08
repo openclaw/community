@@ -299,4 +299,4 @@ AI tools (Claude) were used as a collaborative partner in designing the CIP proc
 ---
 
 *This is the foundational CIP that defines the Community Improvement Plan process.
-To propose a CIP, start by opening an [RFCIP issue](https://github.com/openclaw/openclaw-discord-community/issues/new?template=rfcip.yml).*
+To propose a CIP, start by opening an [RFCIP issue](https://github.com/openclaw/community/issues/new?template=rfcip.yml).*
