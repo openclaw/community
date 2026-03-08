@@ -1,0 +1,109 @@
+name: Request for Community Improvement Plan (RFCIP)
+description: Pitch an idea for a Community Improvement Plan (CIP)
+title: "RFCIP: "
+labels:
+  - cip:draft
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Request for Community Improvement Plan
+
+        Use this form to pitch an idea before writing a full CIP.
+        A staff champion must be assigned before a CIP pull request can be opened.
+
+        **What happens next:**
+        1. Staff reviews your request.
+        2. A champion (staff sponsor) is assigned.
+        3. Champion greenlights you to open a CIP pull request.
+
+        See `rfcs/0003-cip-template.md` for the full CIP document template.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What problem, gap, or opportunity does this address? Be specific.
+      placeholder: "Currently, there is no way to..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-direction
+    attributes:
+      label: Proposed direction
+      description: High-level sketch of your proposed solution. This doesn't need to be detailed — that's what the full CIP is for.
+      placeholder: "I propose we..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope-impact
+    attributes:
+      label: Scope and impact
+      description: What parts of the community does this affect? Which teams, channels, roles, tools, or processes?
+      placeholder: "This would affect..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: cip-type
+    attributes:
+      label: CIP type
+      description: What category best describes this proposal?
+      options:
+        - Governance (rules, policies, processes)
+        - Structural (channels, roles, team changes)
+        - Tooling (bots, automation, integrations)
+        - Events (programs, activities, community events)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: author-commitment
+    attributes:
+      label: Willingness to author
+      description: Are you willing to write the full CIP document? If not, are you looking for someone to take it on?
+      placeholder: "I'm willing to write the full CIP and see it through."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-champion
+    attributes:
+      label: Proposed champion
+      description: Is there a staff member you'd like to champion this? If unsure, leave blank and staff will assign one.
+      placeholder: "@username or leave blank"
+    validations:
+      required: false
+
+  - type: textarea
+    id: prior-discussion
+    attributes:
+      label: Prior discussion
+      description: Has this been discussed before? Link any relevant Discord threads, issues, or conversations.
+      placeholder: "Discussed in #general on 2026-03-01: https://discord.com/..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and CIPs to avoid duplicates.
+          required: true
+        - label: I believe this requires a full CIP (not a simple rules or policy change).
+          required: true
+        - label: If AI tools were used in drafting this request, I have disclosed that below.
+          required: true
+
+  - type: textarea
+    id: ai-disclosure
+    attributes:
+      label: AI disclosure
+      description: If AI tools were used to help draft any part of this request, describe how they were used. Leave blank if not applicable.
+      placeholder: "Used ChatGPT to help organize bullet points."
+    validations:
+      required: false

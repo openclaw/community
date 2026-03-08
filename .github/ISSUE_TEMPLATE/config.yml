@@ -1,4 +1,7 @@
 blank_issues_enabled: false
+# CIP labels: cip:draft, cip:discussion, cip:accepted, cip:rejected
+#              cip:governance, cip:structural, cip:tooling, cip:events
+#              cip:community
 contact_links:
   - name: Appeals
     url: https://appeal.gg/clawd
