@@ -77,5 +77,5 @@ used. Delete this section if no AI tools were used. -->
 
 ---
 
-*This document follows the [Community Improvement Plan process](0003-cip-template.md).
+*This document follows the [Community Improvement Plan process](0003-rfcip-template.md).
 To propose a CIP, start by opening an [RFCIP issue](https://github.com/openclaw/openclaw-discord-community/issues/new?template=rfcip.yml).*

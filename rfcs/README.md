@@ -6,7 +6,7 @@ This directory contains Community Improvement Plans — formal proposals for cha
 
 1. **Pitch:** Open an [RFCIP issue](https://github.com/openclaw/openclaw-discord-community/issues/new?template=rfcip.yml) describing the problem and your proposed direction.
 2. **Champion:** Staff reviews the RFCIP and assigns a champion (staff sponsor and advocate).
-3. **Draft:** Once greenlit, open a pull request adding `rfcs/XXXX-slug.md` (where `XXXX` is the PR number). Use [`0003-cip-template.md`](0003-cip-template.md) as your starting template.
+3. **Draft:** Once greenlit, open a pull request adding `rfcs/XXXX-slug.md` (where `XXXX` is the PR number). Use [`0003-rfcip-template.md`](0003-rfcip-template.md) as your starting template.
 4. **Discussion:** Minimum 7-day discussion period on the GitHub PR and (optionally) Discord. The champion chooses the Discord venue.
 5. **Decision:** The Admin makes the final accept or reject decision.
 6. **Accepted:** PR is merged. A tracking issue is opened for implementation.
@@ -47,5 +47,5 @@ rfcs/XXXX-short-descriptive-slug.md
 
 ## Template
 
-- [`0003-cip-template.md`](0003-cip-template.md) — CIP-003: the formal specification of the CIP process
+- [`0003-rfcip-template.md`](0003-rfcip-template.md) — CIP-003: the formal specification of the CIP process
 - [`XXXX-cip-blank-template.md`](XXXX-cip-blank-template.md) — Blank template to copy when starting a new CIP

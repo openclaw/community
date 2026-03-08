@@ -17,7 +17,7 @@ body:
         2. A champion (staff sponsor) is assigned.
         3. Champion greenlights you to open a CIP pull request.
 
-        See `rfcs/0003-cip-template.md` for the full CIP document template.
+        See `rfcs/0003-rfcip-template.md` for the full CIP document template.
 
   - type: textarea
     id: problem
