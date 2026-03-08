@@ -65,13 +65,13 @@ A GitHub issue opened using the RFCIP issue template. This is a **mandatory scre
 
 #### 2. CIP (Community Improvement Plan)
 
-A formal markdown document submitted as a pull request to the `rfcs/` directory. The CIP number is the pull request number. The file is named `rfcs/XXXX-short-descriptive-slug.md`.
+A formal markdown document submitted as a pull request to the `rfcs/` directory. The CIP number is **sequentially assigned by the champion** when the RFCIP is greenlit. The file is named `rfcs/XXXX-short-descriptive-slug.md`.
 
 **CIP metadata header:**
 
 | Field                   | Description                                               |
 | ----------------------- | --------------------------------------------------------- |
-| CIP                     | Pull request number                                       |
+| CIP                     | Sequentially assigned number                              |
 | Title                   | Descriptive title                                         |
 | Author(s)               | Name(s) and Discord handle(s)                             |
 | Champion                | Staff sponsor — name and Discord handle                   |
@@ -136,7 +136,7 @@ Community member
        │
        ▼
 ┌─────────────┐
-│ Champion    │  ◀── Champion greenlights the author
+│ Champion    │  ◀── Champion greenlights + assigns CIP number
 │ greenlights │
 └──────┬──────┘
        │
@@ -176,6 +176,7 @@ Tracking issue
 
 #### Champion
 - A staff member who serves as **sponsor and advocate** for the proposal.
+- **Assigns the CIP number** when greenlighting the RFCIP (next available sequential number).
 - Actively advocates for the proposal to the Admin and team leads.
 - Takes ownership of shepherding the CIP through the process.
 - Chooses the Discord discussion venue.
@@ -187,16 +188,18 @@ Tracking issue
 
 ### Numbering
 
-CIP numbers are tied to the GitHub pull request number. This eliminates manual number tracking. The file is named:
+CIP numbers are **sequential and manually assigned by the champion** when the RFCIP is greenlit. The champion determines the next available number before the author opens the CIP pull request. The file is named:
 
 ```
 rfcs/XXXX-short-descriptive-slug.md
 ```
 
-For example, if the pull request is #42:
+For example, if the next available number is 004:
 ```
-rfcs/0042-voice-channel-restructure.md
+rfcs/0004-voice-channel-restructure.md
 ```
+
+The champion is responsible for checking existing CIPs to avoid number collisions.
 
 ### GitHub Labels
 

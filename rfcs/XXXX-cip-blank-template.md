@@ -2,7 +2,7 @@
 
 | Field                   | Value                                      |
 | ----------------------- | ------------------------------------------ |
-| **CIP**                 | [PR number]                                |
+| **CIP**                 | [Assigned number]                          |
 | **Title**               | [Descriptive title]                        |
 | **Author(s)**           | [Name(s) and Discord handle(s)]            |
 | **Champion**            | [Staff sponsor — name and Discord handle]  |
