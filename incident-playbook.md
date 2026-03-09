@@ -2,6 +2,8 @@
 
 Use this as a quick-response guide. Always use Barnacle (Sapphire) moderation commands, not native Discord moderation tools.
 
+### **__If you do any moderation actions because of something in the Voice Channels, please use /report-vc as well so there is evidence of it for when people complain to the Admin or Team Leads__**
+
 
 ## Common Moderation Cases
 
