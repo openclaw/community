@@ -11,7 +11,14 @@ These are punishment times we should standardize on for these common offenses.
 
 ### Self Promotion outside of #self-promotion
 
-This should be a 24 hour mute for the first offense (unless it's in a VC, in which case give them a verbal warning first). If the second offense is in the #showcase channel, they should get a /warn and the Showcase Ban role with the `/role` command. Otherwise, they should get a ban.
+```mermaid
+flowchart TD
+	A[First Offense] -->|If only message and joined within 2 weeks| B[Ban]
+	A -->|Otherwise| C[24 hour mute]
+	C --> D[Second Offense]
+	D -->|If in #showcase| E[/warn + Showcase Ban role]
+	D -->|Otherwise| F[Ban]
+```
 
 If you type just `ad` as the reason (not plural), it'll expand itself to a reason explaining to use #self-promotion for self-promo
 
@@ -19,7 +26,7 @@ If you type just `ad` as the reason (not plural), it'll expand itself to a reaso
 
 If they are a brand new join, they should be banned. Otherwise, they should get a 24 hour mute.
 
-### Crypto
+### Crypto / Trading / Prediction Markets
 
 If they're joking about it, use a 1 hour /mute
 
@@ -46,6 +53,8 @@ Instant ban
 ### Doxxing / personal data
 
 Remove content immediately and ban involved users. Then, escalate to Admin right away.
+
+
 
 ### Other
 

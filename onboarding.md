@@ -1,6 +1,6 @@
 # Mod Onboarding
 
-Welcome! This checklist is for new mods and helpers.
+Welcome! This checklist is for new team members.
 
 ## Read first
 
@@ -21,25 +21,8 @@ Welcome! This checklist is for new mods and helpers.
 ## Access + setup
 
 - Confirm you have the correct team role(s).
-- Join your team channel and the shared staff channel.
-- If you are a Trial Moderator (<@&1474489940279820339>), ask your lead for first tasks.
-
-## Tooling overview
-
-- **Barnacle (Sapphire)**: all moderation actions (no native Discord moderation tools).
-- **Hermit**: custom commands (e.g., `/say` redirects).
-- **Audrey**: voice automod and `/report-vc` logging.
-- **Kiai**: message/voice tracking (used by leads and senior staff).
-- **Answer Overflow**: #help management and indexing.
-- **Craig**: voice recording for events.
-- **ChannelBot**: Configurator utility bot.
-- **Krill**: support bot in #help/#ideas (ping Shadow if it goes offline).
-
-## Operating norms
-
-- Appeals are handled by someone other than the originating mod. Use https://appeal.gg/clawd.
-- Use `/say` commands for redirects (help channels, models channel, docs/FAQ).
-- Standardize common punishments using the [Incident Playbook](incident-playbook.md).
+- Read through your team channel and the shared staff channel.
+- Talk to your Team Lead about expectations, coverage needs, and any questions you have.
 
 ## First week checklist
 

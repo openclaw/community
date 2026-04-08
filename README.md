@@ -59,6 +59,10 @@ flowchart TD
 - Maintains automod, role config, and tooling (Barnacle/Hermit/Audrey/Answer Overflow).
 - Coordinates with leads before changes that affect member experience.
 
+### Reddit Moderators
+- Owns the r/OpenClaw and r/Clawdbot subreddits.
+- Handles subreddit moderation, rule enforcement, and community engagement on Reddit.
+
 ### Admin Responsibilities
 
 - Owns final decisions, policy updates, and lead assignments.
@@ -90,7 +94,7 @@ flowchart TD
 
 ## Applying
 
-We accept staff applications by email. Send a short, human-written note to **shadow@openclaw.ai** with the details below.
+We accept staff applications by email. Send a short, **__human-written__** note to **shadow@openclaw.ai** with the details below.
 
 **Subject:** `Staff application – <your Discord handle>`
 
@@ -103,4 +107,3 @@ We accept staff applications by email. Send a short, human-written note to **sha
 - **Extras:** languages, prior OpenClaw involvement, or relevant projects.
 
 We’ll follow up (generally via Discord) if there’s a fit or we need more info.
-This policy will be updated soon with a more detailed onboarding flow.

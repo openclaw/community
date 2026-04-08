@@ -62,5 +62,6 @@ If you didn't read anything else, read this:
 
 - When in doubt, mute for 1 hour with the phrase "pending moderation". Do not ban users instantly.
 - If you are unsure, ping online moderators in #vc-mods or #moderators and ask them for help. (VC Mods, you can ping the regular mods too)
+- If you are moderating someone for a specific message, report it using the regular report flow and then take action from there. This way we have a record of the specific message alongside the regular reason for the mod action, which is extremely helpful for appeals and transparency.
 - If you're doing a voice moderation, you must (if at all possible) use the /report-vc too so that we have a log for if/when they appeal or complain in my DMs
 - DO NOT use the native moderation tools. Always use the Barnacle commands, because otherwise we have no transparency and they don't get any information about why they were moderated.

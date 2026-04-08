@@ -28,7 +28,7 @@ Misc utility bot for the Configurator Team, managed solely through commands
 
 ## Hermit
 Custom bot - https://github.com/openclaw/hermit
-Hosted on https://exe.dev - Shadow's Account
+Hosted on Hetzner, only Shadow can access
 
 ## Clawdinator (all numbers)
 Private OpenClaw instance for maintainers
@@ -41,7 +41,7 @@ RIP.
 
 ## Krill
 OpenClaw instance that functions as our support bot in #help and #ideas
-Hosted on Peter's account on https://exe.dev, only Shadow can access
+Hosted on Hetzner, only Shadow can access
 
 ## Molty
 Peter's personal OpenClaw instance, maintainers only.
