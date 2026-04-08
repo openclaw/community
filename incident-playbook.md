@@ -13,11 +13,13 @@ These are punishment times we should standardize on for these common offenses.
 
 ```mermaid
 flowchart TD
-	A[First Offense] -->|If only message and joined within 2 weeks| B[Ban]
-	A -->|Otherwise| C[24 hour mute]
-	C --> D[Second Offense]
-	D -->|If in #showcase| E[/warn + Showcase Ban role]
-	D -->|Otherwise| F[Ban]
+    A[First Offense] --> B{Only message<br/>and joined within 2 weeks?}
+    B -->|Yes| C[Ban]
+    B -->|No| D[24 hour mute]
+    D --> E[Second Offense]
+    E --> F{In #showcase?}
+    F -->|Yes| G[Warn + Showcase Ban role]
+    F -->|No| H[Ban]
 ```
 
 If you type just `ad` as the reason (not plural), it'll expand itself to a reason explaining to use #self-promotion for self-promo
