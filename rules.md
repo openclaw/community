@@ -6,7 +6,7 @@
 
 2. No age-restricted or obscene content. This includes text, images, or links featuring nudity, sex, hard violence, or other graphically disturbing content.
 
-3. Treat everyone with respect. Absolutely no harassment, witch hunting, sexism, racism, or hate speech will be tolerated. Because of people's lack of ability to be civil, no politics are allowed here either.
+3. Treat everyone with respect. Absolutely no harassment, witch hunting, sexism, racism, or hate speech will be tolerated, both towards people and towards other projects (including our own). Because of people's lack of ability to be civil, no politics are allowed here either.
 
 4. If you see something against the rules or something that makes you feel unsafe, let staff know with #report. We want this server to be a welcoming space!
 
@@ -16,10 +16,10 @@
 
 7. Read this before you ask questions: https://docs.openclaw.ai/help/troubleshooting
 
-8. No advertising or self-promotion (server invites, "Check out my project", "anyone need a developer", etc) outside of the #self-promotion channel without permission from a staff member. This includes DMing fellow members. The #showcase channel is strictly for showing off your OpenClaw setup and what its done, not sharing your own projects.
+8. No advertising or self-promotion ("Check out my project", "anyone need a developer", etc) outside of the #showcase channel without permission from a staff member. This includes DMing fellow members. Promotion is allowed in #showcase only. Additionally, no Discord invites should be shared at all, even within the #showcase channel.
 
 9. Only use Krill in this server for questions about OpenClaw itself. Use your own OpenClaw agent or other AI for any off-topic discussions. We provide this as a favor to assist you, but it is not a right.
 
-10. No lobster, butter, or cooking jokes. A Clawd has feelings too!
+10. No lobster, butter, or cooking jokes. A Claw has feelings too!
 
 ## Our Community Staff can moderate how they see fit. If you have problems, go to #report and use our Report a Moderator form.

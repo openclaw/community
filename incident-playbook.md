@@ -9,7 +9,7 @@ Use this as a quick-response guide. Always use Barnacle (Sapphire) moderation co
 
 These are punishment times we should standardize on for these common offenses.
 
-### Self Promotion outside of #self-promotion
+### Self Promotion outside of #showcase
 
 ```mermaid
 flowchart TD
@@ -17,12 +17,18 @@ flowchart TD
     B -->|Yes| C[Ban]
     B -->|No| D[24 hour mute]
     D --> E[Second Offense]
-    E --> F{In #showcase?}
-    F -->|Yes| G[Warn + Showcase Ban role]
-    F -->|No| H[Ban]
+    E --> F[Ban]
 ```
 
-If you type just `ad` as the reason (not plural), it'll expand itself to a reason explaining to use #self-promotion for self-promo
+If you type just `ad` as the reason (not plural), it'll expand itself to a reason explaining to use #showcase for self-promo.
+
+Discord invites are not allowed anywhere, including #showcase.
+
+### #showcase forum moderation
+
+#showcase is a forum channel for members to show off projects, setups, and other promotional work. It is intentionally moderated more lightly than general chat. Promo that would be removed elsewhere is allowed here, as long as it follows the rest of the server rules.
+
+Remove or moderate #showcase posts for Discord invites, crypto/trading/prediction-market content, NSFW or graphic content, harassment, spam, trolling, or anything that is clearly unsafe for the community. Use the Showcase Ban role when someone repeatedly abuses #showcase after a warning.
 
 ### Trolling in chat
 

@@ -5,7 +5,7 @@
 These are the roles that Community Staff should be giving out with the `/role` command:
 
 - Clawdtributor (1458375944111915051) - Anyone with a **merged** PR on Github
-- Showcase Ban (1471758347010179166) - Ban a user from both #showcase and #self-promotion
+- Showcase Ban (1471758347010179166) - Ban a user from #showcase
 
 Other roles can be applied for:
 
