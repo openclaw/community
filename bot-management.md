@@ -55,6 +55,37 @@ Gateway forwarder:
 
 The old in-Worker Cloudflare Gateway Durable Object setup is no longer the active gateway path. Gateway events now come through the external forwarder.
 
+### Hermit D1 and deploy setup
+
+Hermit uses Cloudflare D1 for persistent bot state, including clawtributor claim dedupe and other operational records. Drizzle owns the TypeScript schema and generates SQL migration files in the repo; Wrangler applies those migrations to the Cloudflare D1 database.
+
+Relevant repo paths:
+
+```text
+src/db/schema.ts
+drizzle/
+wrangler.jsonc
+```
+
+Operational model:
+
+- Cloudflare Workers Builds deploys Hermit from the `main` branch.
+- The Cloudflare Builds deploy command should be `bun run deploy:cf`.
+- `bun run deploy:cf` runs remote D1 migrations first, then deploys the Worker.
+- Do not add a separate GitHub Actions deploy workflow for Hermit; Cloudflare Builds is the deployment source of truth.
+- `wrangler.jsonc` should keep the D1 binding named `DB` and `migrations_dir` set to `drizzle`.
+
+Useful commands:
+
+```bash
+bun run db:generate      # generate Drizzle SQL migrations
+bun run db:apply:local   # apply migrations to local D1
+bun run db:apply:remote  # apply migrations to production D1
+bun run deploy:cf        # Cloudflare Builds deploy command: migrate, then deploy
+```
+
+D1 migration changes should be reviewed carefully before merge. If a migration is merged, confirm Cloudflare Builds is still configured to run `bun run deploy:cf`; otherwise the Worker may deploy without its expected database schema.
+
 ### Hermit gateway forwarder setup
 
 The forwarder exists because the main Hermit bot runs on Cloudflare Workers, while Discord Gateway connections need a long-lived process. The forwarder connects to Discord, listens for gateway events, signs each event, and sends it to the Worker's `/events` route.
