@@ -30,7 +30,82 @@ Misc utility bot managed solely through commands
 
 ## Hermit
 Custom bot - https://github.com/openclaw/hermit
-Hosted as a Cloudflare Worker
+
+Hermit is split into two runtime pieces:
+
+- Main bot: Cloudflare Worker. This owns slash commands, interactions, scheduled tasks, D1-backed state, and webhook/event handling.
+- Gateway forwarder: Bun process in `forwarder/`, running on Krill's machine. This holds the persistent Discord Gateway connection and forwards gateway events to the Worker.
+
+### Current stack
+
+Main Worker:
+
+- Carbon (`@buape/carbon`) with the fetch adapter.
+- Cloudflare Workers via Wrangler.
+- Bun for dependency management and local scripts.
+- Cloudflare D1 for persistent state.
+- Drizzle ORM for schema and migrations.
+- Carbon message/event listeners for Discord automod responses, auto-publish, thread welcome, and GIF repost behavior.
+
+Gateway forwarder:
+
+- Carbon Gateway Forwarder plugin (`@buape/carbon/gateway-forwarder`).
+- Bun runtime on Krill's machine.
+- Bun for dependency management, TypeScript execution, and run scripts.
+
+The old in-Worker Cloudflare Gateway Durable Object setup is no longer the active gateway path. Gateway events now come through the external forwarder.
+
+### Hermit gateway forwarder setup
+
+The forwarder exists because the main Hermit bot runs on Cloudflare Workers, while Discord Gateway connections need a long-lived process. The forwarder connects to Discord, listens for gateway events, signs each event, and sends it to the Worker's `/events` route.
+
+Flow:
+
+```mermaid
+flowchart LR
+  D[Discord Gateway] --> F[Hermit gateway forwarder<br/>Krill machine]
+  F -->|signed POST /events| W[Hermit Cloudflare Worker]
+  W --> C[Discord REST API]
+```
+
+Forwarder location in repo:
+
+```text
+forwarder/
+```
+
+Forwarder required env vars:
+
+```env
+BASE_URL=
+DEPLOY_SECRET=
+DISCORD_CLIENT_ID=
+DISCORD_PUBLIC_KEY=
+DISCORD_BOT_TOKEN=
+FORWARDER_PRIVATE_KEY=
+```
+
+`BASE_URL`, `DEPLOY_SECRET`, `DISCORD_CLIENT_ID`, `DISCORD_PUBLIC_KEY`, and `DISCORD_BOT_TOKEN` should match the main bot's credentials. `FORWARDER_PRIVATE_KEY` is the Ed25519 private key used only by the forwarder.
+
+Main Worker required extra secret:
+
+```env
+FORWARDER_PUBLIC_KEY=
+```
+
+Set the Worker public key secret with:
+
+```bash
+bunx wrangler secret put FORWARDER_PUBLIC_KEY
+```
+
+Operational notes:
+
+- Do not commit `forwarder/.env` or private keys.
+- If the forwarder keypair changes, update `FORWARDER_PRIVATE_KEY` on Krill's machine and `FORWARDER_PUBLIC_KEY` in Cloudflare.
+- The Worker verifies forwarded events against `FORWARDER_PUBLIC_KEY`; Discord interactions still use `DISCORD_PUBLIC_KEY`.
+- The forwarder currently requests `Guilds`, `GuildMessages`, and `MessageContent` gateway intents.
+- Start commands from `forwarder/`: `bun run dev` for watch mode, or `bun run start` for normal runtime.
 
 ## Clawd
 Foundation OpenClaw instance.
