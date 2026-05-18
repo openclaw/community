@@ -2,7 +2,7 @@
 
 Use this as a quick-response guide. Always use Barnacle (Sapphire) moderation commands, not native Discord moderation tools.
 
-### **__If you do any moderation actions because of something in the Voice Channels, please use /report-vc as well so there is evidence of it for when people complain to the Admin or Team Leads__**
+### **__If you do any moderation actions because of something in the Voice Channels, please use /report-vc as well so there is evidence of it for when people complain to the Admin or leads__**
 
 
 ## Common Moderation Cases
@@ -28,7 +28,7 @@ Discord invites are not allowed anywhere, including #showcase.
 
 #showcase is a forum channel for members to show off projects, setups, and other promotional work. It is intentionally moderated more lightly than general chat. Promo that would be removed elsewhere is allowed here, as long as it follows the rest of the server rules.
 
-Remove or moderate #showcase posts for Discord invites, crypto/trading/prediction-market content, NSFW or graphic content, harassment, spam, trolling, or anything that is clearly unsafe for the community. Use the Showcase Ban role when someone repeatedly abuses #showcase after a warning.
+Remove or moderate #showcase posts for Discord invites, crypto/trading/prediction-market content, NSFW or graphic content, harassment, spam, trolling, or anything that is clearly unsafe for the community. Escalate repeat #showcase abuse to a lead or the Admin.
 
 ### Trolling in chat
 

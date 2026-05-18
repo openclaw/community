@@ -2,9 +2,9 @@
 
 OpenClaw uses Barnacle (723205682911903774) to manage its moderation needs. It’s a whitelabel instance of [Sapphire](https://sapph.xyz).
 
-## Moderation Team Structure
+## Moderation Area
 
-See [Moderation Organization](moderation-organization.md) for team layout, leads, and membership rules.
+See the [README](README.md) for the current Community Staff areas, leads, and elevated permission groups.
 
 Here are some common commands you would use to moderate the server.
 
@@ -46,9 +46,11 @@ Additionally, the Server Guide has a large amount of common questions about the 
 
 Stay reasonably active and engaged with the community. This can include sending messages, being present in voice, answering support questions, or participating in mod discussions.
 
+Check staff update announcements and react to them once read. Any reaction is fine; this helps leads confirm staff are seeing important updates.
+
 ### Inactivity / Leave of Absence (LOA)
 
-If you will be away for multiple days or unable to complete your duties, post an inactivity log in your team channel and ping your lead, so leads can reassign coverage. There is no hard limit to LOA length, but please avoid radio silence.
+If you will be away for multiple days or unable to complete your duties, post an inactivity log in the appropriate staff channel and ping your lead, so leads can reassign coverage. There is no hard limit to LOA length, but please avoid radio silence.
 
 Format:
 - Dates: 12th June 2024 - 1st July 2024
@@ -56,12 +58,18 @@ Format:
 
 Consider muting server notifications while you are away.
 
+### Activity Warnings
+
+If you appear inactive for an extended period, Hermit may send you an activity warning by DM. The warning will link the activity expectations and LOA guidance, and you will have two days to respond. Leads/Admin will discuss your availability from there.
+
+Repeated inactivity after a warning may result in removal from Community Staff.
+
 ## Biggest Rules
 
 If you didn't read anything else, read this:
 
 - When in doubt, mute for 1 hour with the phrase "pending moderation". Do not ban users instantly.
-- If you are unsure, ping online moderators in #vc-mods or #moderators and ask them for help. (VC Mods, you can ping the regular mods too)
+- If you are unsure, ping online moderators in #moderators or the relevant staff channel and ask them for help.
 - If you are moderating someone for a specific message, report it using the regular report flow and then take action from there. This way we have a record of the specific message alongside the regular reason for the mod action, which is extremely helpful for appeals and transparency.
 - If you're doing a voice moderation, you must (if at all possible) use the /report-vc too so that we have a log for if/when they appeal or complain in my DMs
 - DO NOT use the native moderation tools. Always use the Barnacle commands, because otherwise we have no transparency and they don't get any information about why they were moderated.

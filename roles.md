@@ -2,14 +2,16 @@
 
 ## Moderator Role Guidance
 
-These are the roles that Community Staff should be giving out with the `/role` command:
+Community Staff should not manually grant roles unless the Admin or relevant lead gives specific direction.
 
-- Clawdtributor (1458375944111915051) - Anyone with a **merged** PR on Github
-- Showcase Ban (1471758347010179166) - Ban a user from #showcase
+### Clawtributor
 
-Other roles can be applied for:
+The Clawtributor role is for anyone with a **merged** PR on GitHub.
 
-- Automod Bypass (1469051644024193126) - Lets users bypass the crypto automod (and a couple others) as well as have image perms, bypass slowmode, and a couple other misc things.
-- Shell Society (1470356404706607227) - Gives users access to the Shell Society.
+Members claim this themselves with Hermit's `/claim` command. Hermit gathers their PRs and sends the request for review. Community Staff working in the help area are responsible for confirming or denying requests.
 
-The application is at https://appeal.gg/clawd alongside the regular appeals. These go to the Admin
+### Shell Society
+
+Shell Society gives users access to the Shell Society.
+
+The application is at https://appeal.gg/clawd alongside regular appeals. These go to the Admin.

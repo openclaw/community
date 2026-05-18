@@ -18,7 +18,7 @@
 
 8. No advertising or self-promotion ("Check out my project", "anyone need a developer", etc) outside of the #showcase channel without permission from a staff member. This includes DMing fellow members. Promotion is allowed in #showcase only. Additionally, no Discord invites should be shared at all, even within the #showcase channel.
 
-9. Only use Krill in this server for questions about OpenClaw itself. Use your own OpenClaw agent or other AI for any off-topic discussions. We provide this as a favor to assist you, but it is not a right.
+9. Only use Krill in this server for questions about OpenClaw itself. Use your own OpenClaw agent or other AI for any off-topic discussions. We provide this as a favor to assist you, but it is not a right. Community Staff may ping Krill into other channels when needed for support, triage, or member guidance.
 
 10. No lobster, butter, or cooking jokes. A Claw has feelings too!
 

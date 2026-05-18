@@ -1,5 +1,5 @@
 Hi! This repository is our workspace for documenting how the OpenClaw Discord server is run.
-It's written from the perspective of myself and the other Team Leads, but is open source for transparency.
+It's written from the perspective of myself and the other leads, but is open source for transparency.
 
 This is a living document, anything can and will be changed at any time without warning. The only exception is the Rules, which will have changes announced in the #announcements channel within the server.
 If you think that something should be changed in our policies, feel free to open a GitHub issue here on this repo.
@@ -13,86 +13,106 @@ If you think that something should be changed in our policies, feel free to open
 - [Rules (Mirror)](rules.md)
 - [Roles Reference](roles.md)
 - [Incident Playbook](incident-playbook.md)
+- [Bot Reference](bot-management.md)
 
-# Teams
+# Community Staff Structure
 
-Our Community Staff is made up of 4 different teams. Each team has a lead, and the leads report to the Admin. The Admin is the final person who will make decisions regarding the server, but they will often ask for input from the leads before making a decision.
-Staff can be in one or more teams as deemed acceptable by the Team Leads. All together, our entire team is referred to as the Community Staff.
+Community Staff is the volunteer team that supports OpenClaw's community spaces. Staff help with moderation, support, events, Reddit, and community operations. The Admin owns final decisions, policy updates, staffing, and escalations, but will often ask the leads for input before making major decisions.
+
+Community Staff is not split into separate teams. Instead, there are areas of responsibility that Community Staff work on together, with leads responsible for coordination and final direction in each area. Staff may help across areas as needed.
 
 ## Hierarchy
 
 ```mermaid
 flowchart TD
-  A[Admin] --> DL[Discord Moderator Lead]
-  DL --> D[Discord Moderator Team]
-  A --> VL[Voice Chat Lead]
-  VL --> V[Voice Chat Team]
-  VL --> EP[Event Presenters]
-  A --> HL[Helper Lead]
-  HL --> H[Helper Team]
-  A --> CL[Configurator Lead]
-  CL --> C[Configurator Team]
-  A --> R[Reddit Moderators]
+  A[Admin / Community Lead<br/>Shadow]
+
+  A --> ML[Moderation Lead<br/>Strife]
+  ML --> M[Moderation]
+
+  A --> HL[Help Lead<br/>Julian Engel]
+  HL --> H[Help]
+
+  A --> RL[Reddit Lead<br/>VACInc]
+  RL --> R[Reddit]
+
+  A --> EL[Events Lead<br/>AndyML]
+  EL --> E[Events / Weekly Claw]
 ```
 
-### Discord Moderator (text)
+## Areas of Responsibility
 
-- Owns all text channels that are not support-only or staff-only.
-- Handles general rule enforcement, thread hygiene, and member guidance in text.
-- Coordinates with Helpers when a support issue appears in general chat.
+### Moderation
 
-### VC Moderator (voice)
+- Owns rule enforcement across Discord text and voice spaces.
+- Handles general moderation, thread hygiene, member guidance, and incident response.
+- Uses Barnacle for Discord moderation actions and `/report-vc` for voice incidents when possible.
+- Coordinates with staff working in the help area when a support issue appears in general chat.
 
-- Owns all voice channels and VC events.
-- Handles voice-specific incidents (hot mic, soundboard spam, VC trolling).
-- Uses `/report-vc` for any voice moderation actions when possible.
+### Help
 
-### Helper (support)
-
-- Owns support channels: #help, #users-helping-users, #models.
+- Owns support channels such as #help, #users-helping-users, and model/support discussion spaces.
 - Handles OpenClaw product/support questions and triage.
-- Escalates bugs or account issues to the Admin as needed.
+- Reviews `/claim` requests for the Clawtributor role.
+- Escalates bugs, account issues, or unclear cases to the Admin or relevant lead.
 
-### Configurator (administration)
+### Reddit
 
-- Owns server configuration, permissions, and bot management.
-- Maintains automod, role config, and tooling (Barnacle/Hermit/Audrey/Answer Overflow).
-- Coordinates with leads before changes that affect member experience.
-
-### Reddit Moderators
 - Owns the r/OpenClaw and r/Clawdbot subreddits.
 - Handles subreddit moderation, rule enforcement, and community engagement on Reddit.
+- Coordinates sponsorship/event/community opportunities with the Admin and foundation contact paths when needed.
 
-### Admin Responsibilities
+### Events
 
-- Owns final decisions, policy updates, and lead assignments.
-- Oversees escalations and high-risk moderation cases.
-- Oversees Github moderation and Reddit supervision.
-- Coordinates cross-team projects and staffing coverage.
+- Owns recurring community events, including Weekly Claw.
+- Coordinates event presenters, recordings, and event chat/community experience.
+- Works with the Admin before launching new official outreach or event programs.
 
-## Current Team Leads
+## Elevated Permissions
 
-### Admin: Shadow
+These are not areas of responsibility or separate teams. They are extra permissions granted to specific staff who need them.
+
+### Bot Managers
+
+- Maintain bot dashboards, bot configuration, automod settings, and operational tooling.
+- Coordinate with the Admin and relevant lead before changes that affect member experience.
+
+### GitHub Moderators
+
+- Handle moderation needs on GitHub when maintainers or community staff escalate an issue.
+- Use #github-moderation for coordination.
+- This is an elevated permission group, not a separate staff area.
+
+## Backup Discord Server
+
+The backup Discord server remains available at https://discord.gg/openclaw.
+
+It is kept as a public fallback space in case the main server is unavailable. The backup server is not intended to replace the main community during normal operations and may have no writable public channels unless it is needed.
+
+# Current Leads
+
+### Admin / Community Lead: Shadow
 - X: [@4shadowed](https://x.com/4shadowed)
 - Discord: @4shadowed
 
-### Discord Moderator Lead: Shadow
-- X: [@4shadowed](https://x.com/4shadowed)
-- Discord: @4shadowed
-
-### Voice Chat Lead: AndyML
-- X: [@alauppe](https://x.com/alauppe)
-- Discord: @andyml_
-
-### Helper Lead: Julian Engel
-- X: [@julianengel](https://x.com/julianengel)
-- Discord: @julianengel13
-
-### Configurator Lead: Strife
+### Moderation Lead: Strife
 - X: [@SinOfStrife](https://x.com/SinOfStrife)
 - Discord: @corvus_bane
 
-## Applying
+### Reddit Lead: VACInc
+- Reddit: [u/vacinc](https://reddit.com/u/vacinc)
+- X: [@vacinc](https://x.com/vacinc)
+- Discord: VACInc
+
+### Events Lead: AndyML
+- X: [@alauppe](https://x.com/alauppe)
+- Discord: @andyml_
+
+### Help Lead: Julian Engel
+- X: [@julianengel](https://x.com/julianengel)
+- Discord: @julianengel13
+
+# Applying
 
 We accept staff applications by email. Send a short, **__human-written__** note to **shadow@openclaw.ai** with the details below.
 
@@ -102,7 +122,7 @@ We accept staff applications by email. Send a short, **__human-written__** note 
 - **Experience:** moderation, community leadership, support, or ops experience (links welcome).
 - **Handles:** Discord, GitHub, X (Twitter), plus your best contact email.
 - **Availability:** timezone + typical hours/week.
-- **Preferred team(s):** which team(s) and why.
+- **Preferred area(s):** moderation, help, events, Reddit, bots, GitHub moderation, or another area you want to help with.
 - **Recommendation(s):** who can vouch for you, and how to contact them.
 - **Extras:** languages, prior OpenClaw involvement, or relevant projects.
 
