@@ -72,7 +72,8 @@ Current forms:
 
 | Form | Path | Review channel |
 | --- | --- | --- |
-| Discord appeal | `/discord` | `#cs-appeals` |
+| Discord ban appeal | `/discord-ban` | `#cs-appeals` |
+| Discord mute appeal | `/discord-mute` | `#cs-appeals` |
 | GitHub appeal | `/github` | `#cs-appeals` |
 | Reddit appeal | `/reddit` | `#cs-appeals` |
 | Report a Moderator | `/report-mod` | `#shadow` |

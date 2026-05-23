@@ -13,14 +13,16 @@ Both hosts are first-class. Neither host is a legacy alias.
 
 | Form | Path | Auth options | Review channel |
 | --- | --- | --- | --- |
-| Discord appeal | `/discord` | Discord | `#cs-appeals` |
+| Discord ban appeal | `/discord-ban` | Discord | `#cs-appeals` |
+| Discord mute appeal | `/discord-mute` | Discord | `#cs-appeals` |
 | GitHub appeal | `/github` | GitHub | `#cs-appeals` |
 | Reddit appeal | `/reddit` | Reddit | `#cs-appeals` |
 | Report a Moderator | `/report-mod` | Discord, GitHub, or Reddit | `#shadow` |
 
 Use these links when directing users:
 
-- Discord appeal: https://appeal.openclaw.ai/discord
+- Discord ban appeal: https://appeal.openclaw.ai/discord-ban
+- Discord mute appeal: https://appeal.openclaw.ai/discord-mute
 - GitHub appeal: https://appeal.openclaw.ai/github
 - Reddit appeal: https://appeal.openclaw.ai/reddit
 - Report a moderator: https://appeal.openclaw.ai/report-mod
@@ -57,7 +59,8 @@ Review cards appear in `#cs-appeals`. Use the buttons on the review card:
 
 Configured accept actions:
 
-- Discord appeal: removes the active timeout or unbans the user, depending on the moderation context Hermit found.
+- Discord ban appeal: unbans the user.
+- Discord mute appeal: removes the active timeout.
 - GitHub appeal: unblocks the user from the OpenClaw GitHub organization.
 - Reddit appeal: asks the Devvit Reddit bridge to unban the user from `r/openclaw`, then updates Hermit's stored Reddit moderation context.
 

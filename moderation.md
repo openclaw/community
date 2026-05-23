@@ -29,7 +29,8 @@ Users can appeal mutes and bans or report a moderator at https://appeal.openclaw
 
 Current form links:
 
-- Discord appeal: https://appeal.openclaw.ai/discord
+- Discord ban appeal: https://appeal.openclaw.ai/discord-ban
+- Discord mute appeal: https://appeal.openclaw.ai/discord-mute
 - GitHub appeal: https://appeal.openclaw.ai/github
 - Reddit appeal: https://appeal.openclaw.ai/reddit
 - Report a moderator: https://appeal.openclaw.ai/report-mod
