@@ -13,7 +13,7 @@ Used for SEO and #help management
 https://answeroverflow.com
 
 ## Barnacle
-Whitelabel bot of https://sapph.xyz and https://appeal.gg, used for all moderation and appeals management (Sapphire instance)
+Whitelabel bot of https://sapph.xyz, used for Discord moderation commands and moderation records.
 
 ## Audrey
 Used for automod in voice channels, especially for soundboard spam and VC trolling, and the /report-vc command
@@ -55,9 +55,33 @@ Gateway forwarder:
 
 The old in-Worker Cloudflare Gateway Durable Object setup is no longer the active gateway path. Gateway events now come through the external forwarder.
 
+### Hermit Forms
+
+Hermit runs the OpenClaw forms site for appeals and moderator reports.
+
+Forms hosts:
+
+- https://appeal.openclaw.ai
+- https://forms.openclaw.ai
+
+Both hosts are first-class. `appeal.openclaw.ai` is not a legacy alias.
+
+Forms configuration lives in Hermit's root `forms.config.ts`. That file is the source of truth for form IDs, copy, review channels, and accept/deny actions.
+
+Current forms:
+
+| Form | Path | Review channel |
+| --- | --- | --- |
+| Discord appeal | `/discord` | `#cs-appeals` |
+| GitHub appeal | `/github` | `#cs-appeals` |
+| Reddit appeal | `/reddit` | `#cs-appeals` |
+| Report a Moderator | `/report-mod` | `#shadow` |
+
+Reddit moderation context and Reddit unban actions are handled through a Devvit bridge. Hermit uses Reddit OAuth for identity, but does not store Reddit moderator OAuth tokens.
+
 ### Hermit D1 and deploy setup
 
-Hermit uses Cloudflare D1 for persistent bot state, including clawtributor claim dedupe and other operational records. Drizzle owns the TypeScript schema and generates SQL migration files in the repo; Wrangler applies those migrations to the Cloudflare D1 database.
+Hermit uses Cloudflare D1 for persistent bot state, including clawtributor claim dedupe, Forms submissions, Reddit moderation context, and other operational records. Drizzle owns the TypeScript schema and generates SQL migration files in the repo; Wrangler applies those migrations to the Cloudflare D1 database.
 
 Relevant repo paths:
 
