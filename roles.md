@@ -14,4 +14,4 @@ Members claim this themselves with Hermit's `/claim` command. Hermit gathers the
 
 Shell Society gives users access to the Shell Society.
 
-The application is at https://appeal.gg/clawd alongside regular appeals. These go to the Admin.
+The application process is handled by the Admin. Do not use the appeals forms for Shell Society requests unless the Admin specifically directs someone there.

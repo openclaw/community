@@ -23,17 +23,23 @@ When you're moderating, please keep in mind that the user can see everything you
 
 Some users here have access to moderate users on Github, maintainers or community staff can ping them for situations on Github in #github-moderation, and full guidelines are there.
 
-## Appeals
+## Appeals and Moderator Reports
 
-Users can appeal their mutes and bans by going to https://appeal.gg/clawd.
+Users can appeal mutes and bans or report a moderator at https://appeal.openclaw.ai.
 
-Community Staff can review these either in the #appeal channel or by going to https://dashboard.appeal.gg/1456350064065904867/submissions
+Current form links:
 
-They can also report you to admins on that same form.
+- Discord ban appeal: https://appeal.openclaw.ai/discord-ban
+- Discord mute appeal: https://appeal.openclaw.ai/discord-mute
+- GitHub appeal: https://appeal.openclaw.ai/github
+- Reddit appeal: https://appeal.openclaw.ai/reddit
+- Report a moderator: https://appeal.openclaw.ai/report-mod
 
-Appeals should be handled by someone other than the originating mod. If you issued the action, do not review that appeal, ask another mod or your lead/admin to handle it.
+Community Staff review appeals in `#cs-appeals`. Moderator reports go to `#shadow` and should be handled by the Admin or a specifically delegated lead.
 
-When you accept or deny the appeal, the user will see the reason you put in, in the format like `Your appeal was accepted. ${reason}`
+Appeals should be handled by someone other than the originating mod. If you issued the action, do not review that appeal; ask another mod, your lead, or the Admin to handle it.
+
+See [Appeals and Moderator Reports](appeals-and-reports.md) for the full flow.
 
 ## Working in Chat
 
