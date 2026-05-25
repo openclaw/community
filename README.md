@@ -4,7 +4,7 @@ It's written from the perspective of myself and the other leads, but is open sou
 This is a living document, anything can and will be changed at any time without warning. The only exception is the Rules, which will have changes announced in the #announcements channel within the server.
 If you think that something should be changed in our policies, feel free to open a GitHub issue here on this repo.
 
-**This repository is not the place to appeal moderation actions or report a moderator. This is solely to house and discuss our policies.** If you want to appeal a moderation action or report a moderator, use the forms at https://appeal.openclaw.ai.
+**This repository is not the place to appeal moderation actions or report a moderator. This is solely to house and discuss our policies.** If you want to appeal a moderation action or report a moderator, use the forms at https://forms.openclaw.ai.
 
 # Table of Contents
 

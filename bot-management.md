@@ -59,12 +59,9 @@ The old in-Worker Cloudflare Gateway Durable Object setup is no longer the activ
 
 Hermit runs the OpenClaw forms site for appeals and moderator reports.
 
-Forms hosts:
+Forms host:
 
-- https://appeal.openclaw.ai
 - https://forms.openclaw.ai
-
-Both hosts are first-class. `appeal.openclaw.ai` is not a legacy alias.
 
 Forms configuration lives in Hermit's root `forms.config.ts`. That file is the source of truth for form IDs, copy, review channels, and accept/deny actions.
 
@@ -75,10 +72,9 @@ Current forms:
 | Discord ban appeal | `/discord-ban` | `#cs-appeals` |
 | Discord mute appeal | `/discord-mute` | `#cs-appeals` |
 | GitHub appeal | `/github` | `#cs-appeals` |
-| Reddit appeal | `/reddit` | `#cs-appeals` |
 | Report a Moderator | `/report-mod` | `#shadow` |
 
-Reddit moderation context and Reddit unban actions are handled through a Devvit bridge. Hermit uses Reddit OAuth for identity, but does not store Reddit moderator OAuth tokens.
+Reddit moderation context and Reddit unban actions are handled through a Devvit bridge, but a Reddit appeal form is not currently exposed on the public forms host.
 
 ### Hermit D1 and deploy setup
 
