@@ -4,7 +4,7 @@ OpenClaw uses Hermit Forms for moderation appeals and moderator reports.
 
 Primary forms host:
 
-- https://forms.openclaw.ai
+- https://appeals.openclaw.ai
 
 ## User-facing forms
 
@@ -17,16 +17,16 @@ Primary forms host:
 
 Use these links when directing users:
 
-- Discord ban appeal: https://forms.openclaw.ai/discord-ban
-- Discord mute appeal: https://forms.openclaw.ai/discord-mute
-- GitHub appeal: https://forms.openclaw.ai/github
-- Report a moderator: https://forms.openclaw.ai/report-mod
+- Discord ban appeal: https://appeals.openclaw.ai/discord-ban
+- Discord mute appeal: https://appeals.openclaw.ai/discord-mute
+- GitHub appeal: https://appeals.openclaw.ai/github
+- Report a moderator: https://appeals.openclaw.ai/report-mod
 
 ## Appeal flow
 
 ```mermaid
 flowchart TD
-  U[User opens forms.openclaw.ai] --> F{Choose form}
+  U[User opens appeals.openclaw.ai] --> F{Choose form}
   F --> D[Discord appeal]
   F --> G[GitHub appeal]
   D --> DA[Sign in with Discord]

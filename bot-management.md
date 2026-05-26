@@ -61,7 +61,7 @@ Hermit runs the OpenClaw forms site for appeals and moderator reports.
 
 Forms host:
 
-- https://forms.openclaw.ai
+- https://appeals.openclaw.ai
 
 Forms configuration lives in Hermit's root `forms.config.ts`. That file is the source of truth for form IDs, copy, review channels, and accept/deny actions.
 

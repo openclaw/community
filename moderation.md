@@ -25,14 +25,14 @@ Some users here have access to moderate users on Github, maintainers or communit
 
 ## Appeals and Moderator Reports
 
-Users can appeal mutes and bans or report a moderator at https://forms.openclaw.ai.
+Users can appeal mutes and bans or report a moderator at https://appeals.openclaw.ai.
 
 Current form links:
 
-- Discord ban appeal: https://forms.openclaw.ai/discord-ban
-- Discord mute appeal: https://forms.openclaw.ai/discord-mute
-- GitHub appeal: https://forms.openclaw.ai/github
-- Report a moderator: https://forms.openclaw.ai/report-mod
+- Discord ban appeal: https://appeals.openclaw.ai/discord-ban
+- Discord mute appeal: https://appeals.openclaw.ai/discord-mute
+- GitHub appeal: https://appeals.openclaw.ai/github
+- Report a moderator: https://appeals.openclaw.ai/report-mod
 
 Community Staff review appeals in `#cs-appeals`. Moderator reports go to `#shadow` and should be handled by the Admin or a specifically delegated lead.
 
