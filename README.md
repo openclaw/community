@@ -1,3 +1,5 @@
+![Community banner](docs/assets/readme-banner.jpg)
+
 Hi! This repository is our workspace for documenting how the OpenClaw Discord server is run.
 It's written from the perspective of myself and the other leads, but is open source for transparency.
 
