@@ -87,6 +87,10 @@ These are not areas of responsibility or separate teams. They are extra permissi
 - Use #github-moderation for coordination.
 - This is an elevated permission group, not a separate staff area.
 
+Current GitHub Moderator:
+
+- Hannes Rudolph (`@hannesrudolph`)
+
 ## Backup Discord Server
 
 The backup Discord server remains available at https://discord.gg/openclaw.
