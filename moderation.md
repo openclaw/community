@@ -1,80 +1,34 @@
-# Discord Moderation
+# Moderation Reference
 
-OpenClaw uses Barnacle (723205682911903774) to manage its moderation needs. It’s a whitelabel instance of [Sapphire](https://sapph.xyz).
+Use this as a practical reference when a conversation needs intervention. Start with help, explanation, or redirection when that is enough.
 
-## Moderation Area
+## Approved Moderation Tools
 
-See the [README](README.md) for the current Community Staff areas, leads, and elevated permission groups.
+OpenClaw uses Barnacle, a whitelabel instance of [Sapphire](https://sapph.xyz), for Discord moderation and moderation records.
 
-Here are some common commands you would use to moderate the server.
+Common commands:
 
-- `/ban` - This permanently (or temporarily) removes a user from the server and prevents them from joining back. They will not be able to speak or read messages. You must specify a user and a reason, and a duration is optional (the user will be unbanned after the time ends), otherwise it will default to permanent.
-- `/mute` - Times out a user. They will not be able to speak for the duration of the timeout but will still be able to read messages. You must specify a user and reason, and it’s recommended to specify a duration, otherwise it will default to an hour.
-- `/warn` - This does not impair the users ability to talk in the server. It’s simply a mark on their record. More of a “stop doing that” before escalating to a mute or ban. Requires a user and reason.
-- `/caselist` - This lets you see a user's history of warns/mutes/bans from different moderators.
+- `/warn`: records a warning without restricting the user's ability to participate.
+- `/mute`: temporarily times out a user while they can still read the server.
+- `/ban`: removes a user and prevents them from rejoining for the selected duration.
+- `/caselist`: shows a user's moderation history.
 
-When you're moderating, please keep in mind that the user can see everything you put in except for the mod notes section.
+Use a clear reason and include the relevant message or evidence. If the action relates to voice chat, use `/report-vc` whenever possible so the incident has a record.
 
-- Reason = the main reason they see and that's logged in previews like `/caselist`
-- Verified Proof = the message that was reported
-- Proof = anything you type in as evidence
+Use Barnacle rather than native Discord moderation tools when Barnacle is available. Keeping actions in one system makes context and review easier.
 
-## Github Moderation
+## Choosing a Response
 
-Some users here have access to moderate users on Github, maintainers or community staff can ping them for situations on Github in #github-moderation, and full guidelines are there.
+- Explain or redirect when the issue appears accidental.
+- Use a DM when a private conversation is more appropriate.
+- Remove content when it is harmful, unsafe, or clearly disruptive.
+- Ask another team member for help when the situation is unclear.
+- Escalate scams, doxxing, threats, serious harassment, repeated abuse, and incidents involving staff.
 
-## Appeals and Moderator Reports
+There is no need to argue with someone who is determined to disrupt the community. Make the situation safe, record what matters, and return attention to users who need help.
 
-Users can appeal mutes and bans or report a moderator at https://appeals.openclaw.ai.
+## Help in Chat
 
-Current form links:
+Hermit provides `/say` commands for common redirects. See the [Hermit command reference](https://github.com/openclaw/hermit/blob/main/src/commands/say.ts).
 
-- Discord ban appeal: https://appeals.openclaw.ai/discord-ban
-- Discord mute appeal: https://appeals.openclaw.ai/discord-mute
-- GitHub appeal: https://appeals.openclaw.ai/github
-- Report a moderator: https://appeals.openclaw.ai/report-mod
-
-Community Staff review appeals in `#cs-appeals`. Moderator reports go to `#shadow` and should be handled by the Admin or a specifically delegated lead.
-
-Appeals should be handled by someone other than the originating mod. If you issued the action, do not review that appeal; ask another mod, your lead, or the Admin to handle it.
-
-See [Appeals and Moderator Reports](appeals-and-reports.md) for the full flow.
-
-## Working in Chat
-
-Hermit has a set of `/say` commands to help with redirecting users in chat.
-You can find all of those here: [https://github.com/openclaw/hermit/blob/main/src/commands/say.ts](https://github.com/openclaw/hermit/blob/main/src/commands/say.ts)
-
-Additionally, the Server Guide has a large amount of common questions about the Discord server itself. This can be found at the top of the channel list.
-
-## Activity Expectations
-
-Stay reasonably active and engaged with the community. This can include sending messages, being present in voice, answering support questions, or participating in mod discussions.
-
-Check staff update announcements and react to them once read. Any reaction is fine; this helps leads confirm staff are seeing important updates.
-
-### Inactivity / Leave of Absence (LOA)
-
-If you will be away for multiple days or unable to complete your duties, post an inactivity log in the appropriate staff channel and ping your lead, so leads can reassign coverage. There is no hard limit to LOA length, but please avoid radio silence.
-
-Format:
-- Dates: 12th June 2024 - 1st July 2024
-- Reason: Optional. If you don’t want to share publicly, DM a lead or the Admin.
-
-Consider muting server notifications while you are away.
-
-### Activity Warnings
-
-If you appear inactive for an extended period, Hermit may send you an activity warning by DM. The warning will link the activity expectations and LOA guidance, and you will have two days to respond. Leads/Admin will discuss your availability from there.
-
-Repeated inactivity after a warning may result in removal from Community Staff.
-
-## Biggest Rules
-
-If you didn't read anything else, read this:
-
-- When in doubt, mute for 1 hour with the phrase "pending moderation". Do not ban users instantly.
-- If you are unsure, ping online moderators in #moderators or the relevant staff channel and ask them for help.
-- If you are moderating someone for a specific message, report it using the regular report flow and then take action from there. This way we have a record of the specific message alongside the regular reason for the mod action, which is extremely helpful for appeals and transparency.
-- If you're doing a voice moderation, you must (if at all possible) use the /report-vc too so that we have a log for if/when they appeal or complain in my DMs
-- DO NOT use the native moderation tools. Always use the Barnacle commands, because otherwise we have no transparency and they don't get any information about why they were moderated.
+The Server Guide at the top of the channel list contains common questions about the Discord server.
