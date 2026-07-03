@@ -55,6 +55,27 @@ Gateway forwarder:
 
 The old in-Worker Cloudflare Gateway Durable Object setup is no longer the active gateway path. Gateway events now come through the external forwarder.
 
+### Hermit Forms
+
+Hermit runs the OpenClaw forms site for appeals and moderator reports.
+
+Forms host:
+
+- https://appeals.openclaw.ai
+
+Forms configuration lives in Hermit's root `forms.config.ts`. That file is the source of truth for form IDs, copy, review channels, and accept/deny actions.
+
+Current forms:
+
+| Form | Path | Review channel |
+| --- | --- | --- |
+| Discord ban appeal | `/discord-ban` | `#cs-appeals` |
+| Discord mute appeal | `/discord-mute` | `#cs-appeals` |
+| GitHub appeal | `/github` | `#cs-appeals` |
+| Report a Moderator | `/report-mod` | `#shadow` |
+
+Reddit moderation context and Reddit unban actions are handled through a Devvit bridge, but a Reddit appeal form is not currently exposed on the public forms host.
+
 ### Hermit D1 and deploy setup
 
 Hermit uses Cloudflare D1 for persistent bot state, including clawtributor claim dedupe, Forms submissions, Reddit moderation context, and other operational records. Drizzle owns the TypeScript schema and generates SQL migration files in the repo; Wrangler applies those migrations to the Cloudflare D1 database.
