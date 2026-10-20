@@ -13,6 +13,15 @@ Our priorities are:
 
 We are here to serve the community, not to build bureaucracy or police every conversation.
 
+## Support and Discussion
+
+- **[Get support](https://community.openclaw.ai/):** the official OpenClaw support pathway for setup, usage questions, and troubleshooting. Help people find or start a relevant topic, with useful details and redacted logs.
+- **Discord:** social conversation, collaboration, and development coordination. Keep welcoming members and answering questions when helpful, while directing support requests to the official support site.
+- **Development bugs and feature requests:** use the relevant project's GitHub issues and contribution guidance. For OpenClaw, see [GitHub issues](https://github.com/openclaw/openclaw/issues).
+- **Security vulnerabilities:** follow the project's private security reporting process, not a public support topic. See [OpenClaw's security policy](https://github.com/openclaw/openclaw/blob/main/SECURITY.md).
+
+Moderation appeals, moderator reports, and urgent safety incidents keep their existing routes in the [moderation](moderation.md) and [incident](incident-playbook.md) references.
+
 ## How We Engage
 
 - Be helpful, patient, and respectful.
