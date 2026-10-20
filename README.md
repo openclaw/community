@@ -20,7 +20,7 @@ We are here to serve the community, not to build bureaucracy or police every con
 - **Development bugs and feature requests:** use the relevant project's GitHub issues and contribution guidance. For OpenClaw, see [GitHub issues](https://github.com/openclaw/openclaw/issues).
 - **Security vulnerabilities:** follow the project's private security reporting process, not a public support topic. See [OpenClaw's security policy](https://github.com/openclaw/openclaw/blob/main/SECURITY.md).
 
-Moderation appeals, moderator reports, and urgent safety incidents keep their existing routes in the [moderation](moderation.md) and [incident](incident-playbook.md) references.
+Moderation appeals and moderator reports keep their existing route at [appeal.gg/clawd](https://appeal.gg/clawd). Urgent safety incidents follow the [incident reference](incident-playbook.md), and moderation practices remain in the [moderation reference](moderation.md).
 
 ## How We Engage
 
