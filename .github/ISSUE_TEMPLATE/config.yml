@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
+  - name: Support
+    url: https://community.openclaw.ai/
+    about: Official OpenClaw support for setup, usage questions, and troubleshooting.
   - name: Appeals
     url: https://appeal.gg/clawd
     about: Appeal a moderation action.

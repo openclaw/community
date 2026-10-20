@@ -13,7 +13,8 @@ Welcome to the Community Team. Our job is to help people use and contribute to O
 - Confirm that you have the access and permissions needed for your area.
 - Read the relevant staff channels and ask your lead about current priorities.
 - Learn how to use Krill and the approved moderation tools.
-- Know where to send product questions and serious incidents.
+- Send setup, usage, and troubleshooting questions to **[Get support](https://community.openclaw.ai/)**, the official OpenClaw support pathway; keep Discord for social conversation and collaboration.
+- Know the separate routes for development bugs, private security reports, and serious incidents in the [guide](README.md#support-and-discussion) and [incident reference](incident-playbook.md).
 
 ## First Week
 
