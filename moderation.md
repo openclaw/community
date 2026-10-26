@@ -22,7 +22,7 @@ Use Barnacle rather than native Discord moderation tools when Barnacle is availa
 - Explain or redirect when the issue appears accidental.
 - Use a DM when a private conversation is more appropriate.
 - Remove content when it is harmful, unsafe, or clearly disruptive.
-- Ask another team member for help when the situation is unclear.
+- Ask another Clawkeeper for help when the situation is unclear.
 - Escalate scams, doxxing, threats, serious harassment, repeated abuse, and incidents involving staff.
 
 There is no need to argue with someone who is determined to disrupt the community. Make the situation safe, record what matters, and return attention to users who need help.

@@ -1,6 +1,6 @@
 This is a list of all the bots that are currently in the server and where to manage them.
 
-Bot/configuration access is handled by Bot Managers. Bot Managers are an elevated permission group, not a separate Community Staff team.
+Bot/configuration access is handled by Bot Managers. Bot Managers are an elevated permission group, not a separate team from the Clawkeepers.
 
 # External
 
@@ -167,7 +167,7 @@ OpenClaw instance for automated GitHub QA, rebasing, and merge assistance.
 
 ## Krill
 OpenClaw instance that functions as our support bot in #help and #ideas.
-Community Staff can ping Krill in any channel for support, triage, or member guidance.
+Clawkeepers can ping Krill in any channel for support, triage, or member guidance.
 Hosted on Julian's Hetzner instance.
 
 Krill will also handle international channel translation through a separate translation workspace, replacing Babelfish.

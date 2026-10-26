@@ -1,8 +1,8 @@
-# Community Team Guide
+# Clawkeepers Guide
 
 ## Our Mission
 
-The Community Team exists to help people use and contribute to OpenClaw.
+The Clawkeepers are OpenClaw’s community team. We exist to help people use and contribute to OpenClaw.
 
 Our priorities are:
 
@@ -49,7 +49,7 @@ Do not spend disproportionate time arguing with people who are determined to be 
 
 ## Unbanning Members
 
-A Community Team member may unban someone they are comfortable vouching for, provided the person is not known for serious toxicity, scams, harassment, bot activity, or repeated abuse. The person who requests or performs the unban takes some responsibility for that judgment.
+A Clawkeeper may unban someone they are comfortable vouching for, provided the person is not known for serious toxicity, scams, harassment, bot activity, or repeated abuse. The person who requests or performs the unban takes some responsibility for that judgment.
 
 Before or after unbanning:
 
@@ -72,7 +72,7 @@ Our goal is to build something valuable, not to win every argument online.
 Keep this guide focused on principles. Use the following references for specific procedures:
 
 - [Discord version](discord.md)
-- [Community Team onboarding](onboarding.md)
+- [Clawkeepers onboarding](onboarding.md)
 - [Moderation reference](moderation.md)
 - [Safety and incident reference](incident-playbook.md)
 - [Krill guide](helpers/krill.md)
