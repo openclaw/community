@@ -1,6 +1,6 @@
-**Community Team Guide**
+**Clawkeepers Guide**
 
-We help people use and contribute to OpenClaw.
+We are the Clawkeepers, OpenClaw’s community team. We help people use and contribute to OpenClaw.
 
 **Priorities**
 - Help users understand OpenClaw and solve problems.

@@ -1,10 +1,10 @@
-# Community Team Onboarding
+# Clawkeepers Onboarding
 
-Welcome to the Community Team. Our job is to help people use and contribute to OpenClaw while keeping the community safe and approachable.
+Welcome to the Clawkeepers. Our job is to help people use and contribute to OpenClaw while keeping the community safe and approachable.
 
 ## Read First
 
-- [Community Team Guide](README.md)
+- [Clawkeepers Guide](README.md)
 - [Moderation Reference](moderation.md)
 - [Safety and Incident Reference](incident-playbook.md)
 
@@ -18,7 +18,7 @@ Welcome to the Community Team. Our job is to help people use and contribute to O
 
 ## First Week
 
-- Shadow an experienced team member.
+- Shadow an experienced Clawkeeper.
 - Help with at least one straightforward support or community task.
 - Review the common safety cases in the incident reference.
 - Ask questions when a situation is unclear.
